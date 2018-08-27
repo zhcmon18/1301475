@@ -11,6 +11,14 @@ public class Parametres extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
 
-        Log.d("MonEtiquette", "Bonjour!");
+        Log.d("MonEtiquette", this.getResources().getString(R.string.message));
+
+        if(getResources().getBoolean(R.bool.paysage)){
+            Log.d("MonEtiquette", this.getResources().getString(R.string.message) + " " +
+                    this.getResources().getString(R.string.paysage));
+        }else{
+            Log.d("MonEtiquette", this.getResources().getString(R.string.message) + " " +
+                    this.getResources().getString(R.string.portrait));
+        }
     }
 }
