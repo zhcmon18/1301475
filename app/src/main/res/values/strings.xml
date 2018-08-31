@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PavelZaharciuc</string>
+    <string name="message">Hello!</string>
+    <string name="paysage">(landscape)</string>
+    <string name="portrait">(portrait)</string>
+    <string name="height_at2">Height:</string>
+    <string name="width_at2">Width:</string>
+    <string name="toWin_at2">To win:</string>
 </resources>
