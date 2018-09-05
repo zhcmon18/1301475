@@ -6,4 +6,5 @@
     <string name="height_at2">Height:</string>
     <string name="width_at2">Width:</string>
     <string name="toWin_at2">To win:</string>
+    <string name="button_param">Parametres</string>
 </resources>
