@@ -13,4 +13,6 @@ public final class GConstantes
    public static final int TO_WIN_MIN = 3;
    public static final int TO_WIN_MAX = 4;
    public static final int TO_WIN_DEFAULT_POS = 1;
+
+   public static String SEPARATEUR = "/";
 }
