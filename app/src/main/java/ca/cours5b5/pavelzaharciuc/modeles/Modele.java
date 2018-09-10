@@ -1,11 +1,11 @@
 package ca.cours5b5.pavelzaharciuc.modeles;
 
-import ca.cours5b5.pavelzaharciuc.donnees.Chemin;
-import ca.cours5b5.pavelzaharciuc.donnees.Sauvegardable;
-import ca.cours5b5.pavelzaharciuc.donnees.Sauvegarde;
+import java.util.Map;
 
-public abstract class Modele implements Sauvegardable {
-    public Chemin getCheminDeSauvegarde() {
-        return Sauvegarde.getCheminDeSauvegarde(getClass());
-    }
+public abstract class Modele {
+
+    public abstract void aPartirObjetJson(Map<String, Object> objetJson);
+
+    public abstract Map<String, Object> enObjetJson();
+
 }

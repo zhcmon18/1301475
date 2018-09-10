@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:id="@+id/textView_height"
+        android:id="@+id/textViewHauteur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.168" />
 
     <TextView
-        android:id="@+id/textView_width"
+        android:id="@+id/textViewLargeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -36,11 +36,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_height"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHauteur"
         app:layout_constraintVertical_bias="0.128" />
 
     <TextView
-        android:id="@+id/textView_toWin"
+        android:id="@+id/textViewPourGagner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_width"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLargeur"
         app:layout_constraintVertical_bias="0.174" />
 
     <android.support.constraint.Guideline
@@ -62,7 +62,7 @@
         android:orientation="horizontal" />
 
     <Spinner
-        android:id="@+id/spinner_height"
+        android:id="@+id/spinnerHauteur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -72,12 +72,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.389"
-        app:layout_constraintStart_toEndOf="@+id/textView_height"
+        app:layout_constraintStart_toEndOf="@+id/textViewHauteur"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.156" />
 
     <Spinner
-        android:id="@+id/spinner_toWin"
+        android:id="@+id/spinnerPourGagner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -87,12 +87,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.389"
-        app:layout_constraintStart_toEndOf="@+id/textView_toWin"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_width"
+        app:layout_constraintStart_toEndOf="@+id/textViewPourGagner"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLargeur"
         app:layout_constraintVertical_bias="0.114" />
 
     <Spinner
-        android:id="@+id/spinner_width"
+        android:id="@+id/spinnerLargeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -102,8 +102,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toEndOf="@+id/textView_width"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_height"
+        app:layout_constraintStart_toEndOf="@+id/textViewLargeur"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHauteur"
         app:layout_constraintVertical_bias="0.071" />
 
     <android.support.constraint.Guideline

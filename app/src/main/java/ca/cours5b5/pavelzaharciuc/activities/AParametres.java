@@ -2,46 +2,56 @@ package ca.cours5b5.pavelzaharciuc.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.Map;
+
 import ca.cours5b5.pavelzaharciuc.R;
+import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
+import ca.cours5b5.pavelzaharciuc.serialisation.Jsonification;
 
 public class AParametres extends Activite {
 
     static { Log.d("Atelier04", AParametres.class.getSimpleName() + "::static"); }
 
-    private int valeurHauteur;
-    private int valeurLargeur;
-    private int valeurPourGagner;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(savedInstanceState != null) {
+            restaurerParametres(savedInstanceState);
+        }
 
         setContentView(R.layout.activity_parametres);
 
         messageBonjour();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+    private void restaurerParametres(Bundle savedInstanceState) {
 
-        Spinner spinnerHauteur = this.findViewById(R.id.spinner_height);
-        Spinner spinnerLargeur = this.findViewById(R.id.spinner_width);
-        Spinner spinnerPourGagner = this.findViewById(R.id.spinner_toWin);
+        String json = savedInstanceState.getString("MParametres");
 
-        valeurHauteur = spinnerHauteur.getSelectedItemPosition();
-        valeurLargeur = spinnerLargeur.getSelectedItemPosition();
-        valeurPourGagner = spinnerPourGagner.getSelectedItemPosition();
+        Map<String, Object> objetJson = Jsonification.enObjetJson(json);
+
+        MParametres.instance.aPartirObjetJson(objetJson);
     }
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt("valeurHauteur", valeurHauteur);
-        outState.putInt("valeurLargeur", valeurLargeur);
-        outState.putInt("valeurPourGagner", valeurPourGagner);
+        sauvegarderParametres(outState);
+
+    }
+
+    private void sauvegarderParametres(Bundle outState) {
+        Map<String, Object> objetJson = MParametres.instance.enObjetJson();
+
+        String json = Jsonification.enChaine(objetJson);
+
+        Log.d("MParametres", json);
+
+        outState.putString("MParametres", json);
     }
 
 
