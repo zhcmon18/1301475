@@ -7,4 +7,6 @@
     <string name="width_at2">Largeur:</string>
     <string name="toWin_at2">Pour gagner:</string>
     <string name="button_param">Paramêtres</string>
+    <string name="restore">restaurer</string>
+    <string name="save">sauvegarder</string>
 </resources>

@@ -18,10 +18,10 @@
         android:text="@string/height_at2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.251"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintVertical_bias="0.167" />
 
     <TextView
         android:id="@+id/textViewLargeur"
@@ -34,10 +34,10 @@
         android:text="@string/width_at2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHauteur"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/textViewPourGagner"
@@ -50,10 +50,10 @@
         android:text="@string/toWin_at2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.251"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLargeur"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.16000003" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -71,10 +71,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toEndOf="@+id/textViewHauteur"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.153" />
 
     <Spinner
         android:id="@+id/spinnerPourGagner"
@@ -86,10 +86,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toEndOf="@+id/textViewPourGagner"
         app:layout_constraintTop_toBottomOf="@+id/spinnerLargeur"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <Spinner
         android:id="@+id/spinnerLargeur"
@@ -101,10 +101,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toEndOf="@+id/textViewLargeur"
         app:layout_constraintTop_toBottomOf="@+id/spinnerHauteur"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.064" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"

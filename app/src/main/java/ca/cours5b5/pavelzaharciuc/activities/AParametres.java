@@ -15,6 +15,8 @@ public class AParametres extends Activite {
 
     static { Log.d("Atelier04", AParametres.class.getSimpleName() + "::static"); }
 
+    private String cle = this.getClass().getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +32,13 @@ public class AParametres extends Activite {
 
     private void restaurerParametres(Bundle savedInstanceState) {
 
-        String json = savedInstanceState.getString("MParametres");
+        String json = savedInstanceState.getString(cle);
 
         Map<String, Object> objetJson = Jsonification.enObjetJson(json);
 
         MParametres.instance.aPartirObjetJson(objetJson);
+
+        Log.d("MParametres::" + this.getResources().getString(R.string.restore), json);
     }
 
     protected void onSaveInstanceState(Bundle outState) {
@@ -49,9 +53,9 @@ public class AParametres extends Activite {
 
         String json = Jsonification.enChaine(objetJson);
 
-        Log.d("MParametres", json);
+        outState.putString(cle, json);
 
-        outState.putString("MParametres", json);
+        Log.d("MParametres::" + this.getResources().getString(R.string.save), json);
     }
 
 
