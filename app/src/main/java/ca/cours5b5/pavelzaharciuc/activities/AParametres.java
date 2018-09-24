@@ -8,6 +8,11 @@ import android.widget.Spinner;
 import java.util.Map;
 
 import ca.cours5b5.pavelzaharciuc.R;
+import ca.cours5b5.pavelzaharciuc.controleurs.Action;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurObservation;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
 import ca.cours5b5.pavelzaharciuc.serialisation.Jsonification;
 

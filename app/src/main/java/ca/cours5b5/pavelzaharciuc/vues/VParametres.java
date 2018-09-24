@@ -46,9 +46,17 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
 
         setAdapters();
 
-        remplirAdapteurs();
+        remplirAdapteursInitial();
 
         positionSpinners();
+
+        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+            @Override
+            public void reagirChangementAuModele(Modele modele) {
+                afficherParametres((MParametres) modele);
+            }
+
+        });
     }
 
     private void initialiserAdapteurs() {
@@ -76,16 +84,33 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
         spinnerPourGagner.setAdapter(adapterPourGagner);
     }
 
-    private void remplirAdapteurs() {
+    private void remplirAdapteursInitial() {
         adapterHauteur.addAll(MParametres.instance.getChoixHauteur());
         adapterLargeur.addAll(MParametres.instance.getChoixLargeur());
         adapterPourGagner.addAll(MParametres.instance.getChoixPourGagner());
+    }
+
+    private void remplirAdapteurs(MParametres modele) {
+        adapterHauteur.addAll(modele.getChoixHauteur());
+        adapterLargeur.addAll(modele.getChoixLargeur());
+        adapterPourGagner.addAll(modele.getChoixPourGagner());
+    }
+
+    private void viderAdapteurs() {
+        adapterHauteur.clear();
+        adapterLargeur.clear();
+        adapterPourGagner.clear();
     }
 
     private void positionSpinners() {
         spinnerHauteur.setSelection(adapterHauteur.getPosition(MParametres.instance.getHauteur()));
         spinnerLargeur.setSelection(adapterLargeur.getPosition(MParametres.instance.getLargeur()));
         spinnerPourGagner.setSelection(adapterPourGagner.getPosition(MParametres.instance.getPourGagner()));
+    }
+
+    private void afficherParametres(MParametres modele){
+        viderAdapteurs();
+        remplirAdapteurs(modele);
     }
 
     @Override
@@ -104,13 +129,6 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
 
         action.setArguments(leChoix);
         action.executerDesQuePossible();
-
-        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
-            @Override
-            public void reagirChangementAuModele(Modele modele) {
-
-            }
-        });
     }
 
     @Override

@@ -13,10 +13,13 @@ import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 
 public class ControleurAction {
 
-    private static Map<GCommande, Action> actions = new HashMap<>();
-    private static List<Action> fileAttenteExecution = new ArrayList<>();
+    private static Map<GCommande, Action> actions;
+    private static List<Action> fileAttenteExecution;
 
     static {
+
+        actions = new HashMap<>();
+        fileAttenteExecution = new ArrayList<>();
 
         for (GCommande commande : GCommande.values()) {
             actions.put(commande, new Action());
@@ -42,15 +45,16 @@ public class ControleurAction {
 
     private static void executerActionsExecutables() {
 
-        for(Iterator<Action> iterateur = fileAttenteExecution.listIterator(); iterateur.hasNext();) {
-            Action action = iterateur.next();
+        for (Action action:fileAttenteExecution) {
 
-            if (siActionExecutable(action)) {
-                iterateur.remove();
+            if (siActionExecutable(action)){
+
+                fileAttenteExecution.remove(action);
 
                 executerMaintenant(action);
 
                 lancerObservationSiApplicable(action);
+
             }
         }
     }
@@ -60,7 +64,7 @@ public class ControleurAction {
     }
 
     private static synchronized void executerMaintenant(Action action) {
-        action.listenerFournisseur.executer(action);
+        action.listenerFournisseur.executer(action.args);
     }
 
     private static void lancerObservationSiApplicable(Action action) {
@@ -70,7 +74,7 @@ public class ControleurAction {
     }
 
     private static void enregistrerFournisseur(Fournisseur fournisseur, GCommande commande, ListenerFournisseur listenerFournisseur) {
-        Action action = actions.get(commande);
+        Action action = demanderAction(commande);
 
         action.fournisseur = fournisseur;
         action.listenerFournisseur = listenerFournisseur;

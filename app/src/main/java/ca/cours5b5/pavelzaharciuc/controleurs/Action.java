@@ -20,6 +20,15 @@ public class Action {
     }
 
      Action cloner() {
-        return null;
+        Action action = new Action();
+
+        action.fournisseur = this.fournisseur;
+        action.listenerFournisseur = this.listenerFournisseur;
+
+        if (args != null) {
+            action.setArguments(args.clone());
+        }
+
+        return action;
     }
 }

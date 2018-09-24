@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-public abstract class Activite extends AppCompatActivity {
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
+
+public abstract class Activite extends AppCompatActivity implements Fournisseur{
 
     static { Log.d("Atelier04", Activite.class.getSimpleName() + "::static"); }
 

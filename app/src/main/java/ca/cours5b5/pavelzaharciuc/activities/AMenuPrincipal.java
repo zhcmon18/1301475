@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import ca.cours5b5.pavelzaharciuc.R;
+import ca.cours5b5.pavelzaharciuc.controleurs.Action;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.pavelzaharciuc.global.GCommande;
 
 public class AMenuPrincipal extends Activite {
 
@@ -20,12 +24,15 @@ public class AMenuPrincipal extends Activite {
         Button buttonParam = this.findViewById(R.id.button_param);
 
 
-        buttonParam.setOnClickListener(new View.OnClickListener() {
+        ControleurAction.fournirAction(this, GCommande.OUVRIR_MENU_PARAMET, new ListenerFournisseur() {
             @Override
-            public void onClick(View v) {
-                Intent monIntention = new Intent(AMenuPrincipal.this, AParametres.class);
-                AMenuPrincipal.this.startActivity(monIntention);
+            public void executer(Object... args) {
+                lancerActivite();
             }
         });
+    }
+
+    private void lancerActivite() {
+        this.startActivity(new Intent(this, AParametres.class));
     }
 }

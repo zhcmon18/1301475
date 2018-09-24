@@ -17,6 +17,7 @@ public class ControleurObservation {
 
     public static void observerModele(String noModele, final ListenerObservateur listenerObservateur) {
         observations.put(MParametres.instance, listenerObservateur);
+        lancerObservation(MParametres.instance);
     }
 
     public static void lancerObservation (Modele modele) {
