@@ -23,7 +23,6 @@ public class AMenuPrincipal extends Activite {
         setContentView(R.layout.activity_principal);
         Button buttonParam = this.findViewById(R.id.button_param);
 
-
         ControleurAction.fournirAction(this, GCommande.OUVRIR_MENU_PARAMET, new ListenerFournisseur() {
             @Override
             public void executer(Object... args) {

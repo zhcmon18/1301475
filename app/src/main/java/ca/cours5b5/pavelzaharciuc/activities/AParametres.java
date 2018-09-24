@@ -63,7 +63,6 @@ public class AParametres extends Activite {
         Log.d("MParametres::" + this.getResources().getString(R.string.save), json);
     }
 
-
     private void messageBonjour() {
         Log.d("MonEtiquette", this.getResources().getString(R.string.message));
 
