@@ -5,8 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GConstantes;
 import ca.cours5b5.pavelzaharciuc.serialisation.AttributSerialisable;
+
+import static java.lang.StrictMath.max;
 
 public class MParametres extends Modele {
 
@@ -26,8 +31,31 @@ public class MParametres extends Modele {
     public Integer pourGagner;
     private final String __pourGagner = "pourGagner";
 
+
     public MParametres() {
         genererListesDeChoix();
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_HAUTEUR, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                setHauteur((int) args[0]);
+            }
+        });
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_HAUTEUR, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                setLargeur((int) args[1]);
+            }
+        });
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_HAUTEUR, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                setPourGagner((int) args[2]);
+            }
+        });
+
     }
 
     private void genererListesDeChoix() {
@@ -49,7 +77,8 @@ public class MParametres extends Modele {
     }
 
     private void genererListeChoixPourGagner() {
-        choixPourGagner = genererListeChoix(GConstantes.POUR_GAGNER_MIN, GConstantes.POUR_GAGNER_MAX);
+        int pourGagnerMax = max(hauteur, largeur) * 75 / 100;
+        choixPourGagner = genererListeChoix(GConstantes.POUR_GAGNER_MIN, pourGagnerMax);
     }
 
     private List<Integer> genererListeChoix(int min, int max) {

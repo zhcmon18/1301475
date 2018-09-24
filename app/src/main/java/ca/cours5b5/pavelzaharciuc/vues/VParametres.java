@@ -9,7 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import ca.cours5b5.pavelzaharciuc.R;
+import ca.cours5b5.pavelzaharciuc.controleurs.Action;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurObservation;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerObservateur;
+import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
+import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 
 public class VParametres extends Vue implements AdapterView.OnItemSelectedListener
 {
@@ -86,14 +92,25 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Spinner spinner = (Spinner) parent;
         Integer leChoix = (Integer)parent.getAdapter().getItem(parent.getSelectedItemPosition());
+        Action action;
 
         if(spinner.getId() == R.id.spinnerHauteur) {
-            MParametres.instance.setHauteur(leChoix);
+           action = ControleurAction.demanderAction(GCommande.CHOISIR_HAUTEUR);
         } else if(spinner.getId() == R.id.spinnerLargeur) {
-            MParametres.instance.setLargeur(leChoix);
+            action = ControleurAction.demanderAction(GCommande.CHOISIR_LARGEUR);
         } else {
-            MParametres.instance.setPourGagner(leChoix);
+            action = ControleurAction.demanderAction(GCommande.CHOISIR_POUR_GAGNER);
         }
+
+        action.setArguments(leChoix);
+        action.executerDesQuePossible();
+
+        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+            @Override
+            public void reagirChangementAuModele(Modele modele) {
+
+            }
+        });
     }
 
     @Override

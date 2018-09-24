@@ -12,7 +12,6 @@ public final class GConstantes
 
 
    public static final int POUR_GAGNER_MIN = 3;
-   public static final int POUR_GAGNER_MAX = 4;
    public static final int POUR_GAGNER_DEFAUT = 4;
 
 }

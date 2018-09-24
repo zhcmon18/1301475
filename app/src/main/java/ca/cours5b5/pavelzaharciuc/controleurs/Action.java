@@ -12,14 +12,14 @@ public class Action {
     Object[] args;
 
     public void setArguments(Object... args) {
-
+        this.args = args;
     }
 
     public void executerDesQuePossible() {
-
+        ControleurAction.executerDesQuePossible(this);
     }
 
-    public Action cloner() {
+     Action cloner() {
         return null;
     }
 }
