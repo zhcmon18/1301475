@@ -6,6 +6,7 @@ public enum GCommande {
     CHOISIR_LARGEUR,
     CHOISIR_POUR_GAGNER,
 
-    OUVRIR_MENU_PARAMET
+    OUVRIR_MENU_PARAMET,
+    JOUER
 
 }

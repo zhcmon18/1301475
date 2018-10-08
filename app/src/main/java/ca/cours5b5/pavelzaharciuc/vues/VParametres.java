@@ -103,9 +103,9 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
     }
 
     private void positionSpinners() {
-        spinnerHauteur.setSelection(adapterHauteur.getPosition(MParametres.instance.getHauteur()));
-        spinnerLargeur.setSelection(adapterLargeur.getPosition(MParametres.instance.getLargeur()));
-        spinnerPourGagner.setSelection(adapterPourGagner.getPosition(MParametres.instance.getPourGagner()));
+        spinnerHauteur.setSelection(adapterHauteur.getPosition(MParametres.instance.getParametresPartie().getHauteur()));
+        spinnerLargeur.setSelection(adapterLargeur.getPosition(MParametres.instance.getParametresPartie().getLargeur()));
+        spinnerPourGagner.setSelection(adapterPourGagner.getPosition(MParametres.instance.getParametresPartie().getPourGagner()));
     }
 
     private void afficherParametres(MParametres modele){
@@ -121,10 +121,15 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
 
         if(spinner.getId() == R.id.spinnerHauteur) {
            action = ControleurAction.demanderAction(GCommande.CHOISIR_HAUTEUR);
+           MParametres.instance.getParametresPartie().setHauteur(leChoix);
+
         } else if(spinner.getId() == R.id.spinnerLargeur) {
             action = ControleurAction.demanderAction(GCommande.CHOISIR_LARGEUR);
+            MParametres.instance.getParametresPartie().setLargeur(leChoix);
+
         } else {
             action = ControleurAction.demanderAction(GCommande.CHOISIR_POUR_GAGNER);
+            MParametres.instance.getParametresPartie().setPourGagner(leChoix);
         }
 
         action.setArguments(leChoix);

@@ -10,7 +10,6 @@ public final class GConstantes
    public static final int LARGEUR_MAX = 10;
    public static final int LARGEUR_DEFAUT = 7;
 
-
    public static final int POUR_GAGNER_MIN = 3;
    public static final int POUR_GAGNER_DEFAUT = 4;
 

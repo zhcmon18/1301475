@@ -8,5 +8,8 @@
     <string name="toWin_at2">To win:</string>
     <string name="restore">restore</string>
     <string name="save">save</string>
+    <string name="play">Play</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
     <string name="button_param">Parametres</string>
 </resources>

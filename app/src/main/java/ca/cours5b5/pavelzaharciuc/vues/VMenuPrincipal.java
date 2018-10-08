@@ -14,6 +14,7 @@ import ca.cours5b5.pavelzaharciuc.global.GCommande;
 public class VMenuPrincipal extends Vue {
 
     private Button buttonParam;
+    private Button buttonJouer;
 
     static{ Log.d("Atelier04", VMenuPrincipal.class.getSimpleName() + "::static"); }
 
@@ -29,6 +30,7 @@ public class VMenuPrincipal extends Vue {
         super.onFinishInflate();
 
         buttonParam = this.findViewById(R.id.button_param);
+        buttonJouer = this.findViewById(R.id.button_jouer);
 
 
         buttonParam.setOnClickListener(new OnClickListener() {
@@ -38,5 +40,14 @@ public class VMenuPrincipal extends Vue {
                 action.executerDesQuePossible();
             }
         });
+
+        buttonJouer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Action action = ControleurAction.demanderAction(GCommande.JOUER);
+                action.executerDesQuePossible();
+            }
+        });
+
     }
 }
