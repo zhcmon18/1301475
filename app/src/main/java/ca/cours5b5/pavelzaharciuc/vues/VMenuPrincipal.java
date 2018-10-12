@@ -44,7 +44,7 @@ public class VMenuPrincipal extends Vue {
         buttonJouer.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Action action = ControleurAction.demanderAction(GCommande.JOUER);
+                Action action = ControleurAction.demanderAction(GCommande.JOUER_COUP_ICI);
                 action.executerDesQuePossible();
             }
         });

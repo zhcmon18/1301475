@@ -45,8 +45,6 @@ public class VPartie extends Vue {
     private void observerPartie(){
         String nomModele = MPartie.class.getSimpleName();
 
-        Log.d("Atelier06", "VPartie::observerPartie");
-
         ControleurObservation.observerModele(nomModele, new ListenerObservateur() {
             @Override
             public void reagirNouveauModele(Modele modele) {
@@ -64,7 +62,7 @@ public class VPartie extends Vue {
                 afficherParametres((MPartie) modele);
             }
         });
-
+        Log.d("Atelier06", "VPartie::observerPartie");
     }
 
     private MPartie getPartie(Modele modele){
@@ -79,4 +77,8 @@ public class VPartie extends Vue {
     }
 
     private void afficherParametres(MPartie partie){}
+
+    private void miseAJourGrille(MPartie partie) {
+
+    }
 }
