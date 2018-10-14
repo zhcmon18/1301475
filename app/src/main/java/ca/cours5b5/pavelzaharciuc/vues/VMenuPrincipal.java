@@ -32,20 +32,19 @@ public class VMenuPrincipal extends Vue {
         buttonParam = this.findViewById(R.id.button_param);
         buttonJouer = this.findViewById(R.id.button_jouer);
 
-
         buttonParam.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Action action = ControleurAction.demanderAction(GCommande.OUVRIR_MENU_PARAMET);
-                action.executerDesQuePossible();
+                Action actionParam = ControleurAction.demanderAction(GCommande.OUVRIR_MENU_PARAMET);
+                actionParam.executerDesQuePossible();
             }
         });
 
         buttonJouer.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Action action = ControleurAction.demanderAction(GCommande.JOUER_COUP_ICI);
-                action.executerDesQuePossible();
+                Action actionJouer = ControleurAction.demanderAction(GCommande.OUVRIR_MENU_PARTIE);
+                actionJouer.executerDesQuePossible();
             }
         });
 

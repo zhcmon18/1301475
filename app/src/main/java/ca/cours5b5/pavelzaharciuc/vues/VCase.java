@@ -1,6 +1,7 @@
 package ca.cours5b5.pavelzaharciuc.vues;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
@@ -23,16 +24,19 @@ public class VCase extends AppCompatButton {
     private int rangee;
     private int colonne;
 
-    public VCase (Context context, int rangee, int colonne) {
+    public VCase (Context context, int colonne, int rangee) {
         super(context);
 
         this.rangee = rangee;
         this.colonne = colonne;
-
-        setText("" + colonne + "," + rangee);
+        setText("" + rangee + "," + colonne);
     }
 
     public void afficherJeton(GCouleur jeton) {
-
+        if(jeton.equals(GCouleur.ROUGE)) {
+            setBackgroundColor(Color.RED);
+        } else if(jeton.equals(GCouleur.JAUNE)) {
+            setBackgroundColor(Color.YELLOW);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package ca.cours5b5.pavelzaharciuc.controleurs;
 
+import android.util.Log;
+
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
 
@@ -16,6 +18,7 @@ public class Action {
     }
 
     public void executerDesQuePossible() {
+        Log.d("Atelier07",  this.getClass().getSimpleName() + "." + "executerDesQuePossible");
         ControleurAction.executerDesQuePossible(this);
     }
 

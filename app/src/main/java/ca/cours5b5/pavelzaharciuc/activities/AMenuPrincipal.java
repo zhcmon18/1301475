@@ -27,7 +27,7 @@ public class AMenuPrincipal extends Activite {
             }
         });
 
-        ControleurAction.fournirAction(this, GCommande.JOUER_COUP_ICI, new ListenerFournisseur() {
+        ControleurAction.fournirAction(this, GCommande.OUVRIR_MENU_PARTIE, new ListenerFournisseur() {
             @Override
             public void executer(Object... args) {
                 lancerActiviteJouer();
