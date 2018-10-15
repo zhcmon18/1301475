@@ -63,8 +63,8 @@ public class VGrille extends GridLayout {
     private void ajouterEnTetes(int largeur){
         for(int i = 0; i < largeur; ++i){
             VEntete entete = new VEntete(getContext(), i);
-            installerListenerEntete(entete,i);
-            addView(entete,getMiseEnPageEntete(i));
+            installerListenerEntete(entete, i);
+            addView(entete, getMiseEnPageEntete(i));
         }
         demanderActionEntete();
     }
@@ -73,9 +73,9 @@ public class VGrille extends GridLayout {
         entete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Atelier07", VGrille.this.getClass().getSimpleName() + "." + "onClick");
                 actionEnTete.setArguments(colonne);
                 actionEnTete.executerDesQuePossible();
-                Log.d("Atelier07", VGrille.this.getClass().getSimpleName() + "." + "onClick");
             }
         });
     }
@@ -88,9 +88,8 @@ public class VGrille extends GridLayout {
 
             MColonne colonneActuelle = colonnes.get(colonne);
 
-            for(int rangee=0; rangee < colonneActuelle.getJetons().size(); ++rangee){
-                afficherJeton(colonne, rangee,colonneActuelle.getJetons().get(rangee));
-
+            for(int rangee = 0; rangee < colonneActuelle.getJetons().size(); ++rangee){
+                afficherJeton(colonne, rangee, colonneActuelle.getJetons().get(rangee));
             }
         }
     }
@@ -102,12 +101,10 @@ public class VGrille extends GridLayout {
     }
 
     private LayoutParams getMiseEnPageEntete(int colonne){
-        int rangee = 0;
-
         float poidsRangee = 3;
         float poidsColonne = 3;
 
-        Spec specRangee = GridLayout.spec(rangee, poidsRangee);
+        Spec specRangee = GridLayout.spec(0, poidsRangee);
         Spec specColonne = GridLayout.spec(colonne, poidsColonne);
 
         LayoutParams mesParams = new LayoutParams(specRangee, specColonne);
@@ -124,7 +121,7 @@ public class VGrille extends GridLayout {
             for(int j = 0; j < largeur; ++j) {
                 VCase tempCase= new VCase(getContext(), j, (hauteur - i));
                 addView(tempCase, getMiseEnPageCase(i, j));
-                lesCases[hauteur- i][j] = tempCase;
+                lesCases[hauteur - i][j] = tempCase;
             }
         }
     }

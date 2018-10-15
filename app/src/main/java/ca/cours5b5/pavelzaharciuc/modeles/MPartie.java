@@ -49,7 +49,7 @@ public class MPartie extends Modele {
     private void prochaineCouleurCourante() {
         if(couleurCourante.equals(GCouleur.ROUGE)) {
             couleurCourante = GCouleur.JAUNE;
-        } else if(couleurCourante.equals(GCouleur.JAUNE)) {
+        } else {
             couleurCourante = GCouleur.ROUGE;
         }
     }

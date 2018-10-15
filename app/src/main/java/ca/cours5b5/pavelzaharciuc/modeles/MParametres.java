@@ -22,16 +22,6 @@ public class MParametres extends Modele {
     private List<Integer> choixPourGagner = new ArrayList<>();
 
     @AttributSerialisable
-    public Integer hauteur;
-    private final String __hauteur = "hauteur";
-    @AttributSerialisable
-    public Integer largeur;
-    private final String __largeur = "largeur";
-    @AttributSerialisable
-    public Integer pourGagner;
-    private final String __pourGagner = "pourGagner";
-
-    @AttributSerialisable
     public MParametresPartie parametresPartie;
     private String __parametresPartie = "parametresPartie";
 
@@ -114,31 +104,13 @@ public class MParametres extends Modele {
         return choixPourGagner;
     }
 
-    /*
-    public void setHauteur(Integer hauteur) {
-        this.hauteur = hauteur;
-    }
-
-    public void setLargeur(Integer largeur) {
-        this.largeur = largeur;
-    }
-
-    public void setPourGagner(Integer pourGagner) {
-        this.pourGagner = pourGagner;
-    }
-    */
-
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) {
         for(Map.Entry<String, Object> entry: objetJson.entrySet()) {
             String cle = entry.getKey();
 
-            if (cle.equals(__hauteur)) {
-                parametresPartie.setHauteur(Integer.valueOf(((String)entry.getValue())));
-            } else  if (cle.equals(__largeur)) {
-                parametresPartie.setLargeur(Integer.valueOf(((String)entry.getValue())));
-            } else {
-                parametresPartie.setPourGagner(Integer.valueOf(((String)entry.getValue())));
+            if (cle.equals(__parametresPartie)) {
+                parametresPartie.aPartirObjetJson((Map<String, Object>) entry);
             }
         }
     }
@@ -147,9 +119,7 @@ public class MParametres extends Modele {
     public Map<String, Object> enObjetJson() {
         Map<String, Object> objetJson = new HashMap<>();
 
-        objetJson.put(__hauteur, parametresPartie.getHauteur().toString());
-        objetJson.put(__largeur, parametresPartie.getLargeur().toString());
-        objetJson.put(__pourGagner, parametresPartie.getPourGagner().toString());
+        objetJson.put(__parametresPartie, parametresPartie.enObjetJson());
 
         return objetJson;
     }

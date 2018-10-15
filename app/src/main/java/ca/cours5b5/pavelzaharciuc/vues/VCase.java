@@ -35,7 +35,7 @@ public class VCase extends AppCompatButton {
     public void afficherJeton(GCouleur jeton) {
         if(jeton.equals(GCouleur.ROUGE)) {
             setBackgroundColor(Color.RED);
-        } else if(jeton.equals(GCouleur.JAUNE)) {
+        } else {
             setBackgroundColor(Color.YELLOW);
         }
     }
