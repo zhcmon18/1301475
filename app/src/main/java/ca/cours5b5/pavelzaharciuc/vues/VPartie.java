@@ -29,13 +29,11 @@ public class VPartie extends Vue {
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
-        Log.d("Atelier07", this.getClass().getSimpleName() + "::" + "onFinishInflate");
+        Log.d("Atelier07", this.getClass().getSimpleName() + "." + "onFinishInflate");
 
         initialiser();
 
         observerPartie();
-
-
     }
 
 
@@ -44,16 +42,14 @@ public class VPartie extends Vue {
     }
 
     private void observerPartie(){
-        Log.d("Atelier07", "VPartie::observerPartie");
+        Log.d("Atelier07", "VPartie.observerPartie");
 
         String nomModele = MPartie.class.getSimpleName();
 
         ControleurObservation.observerModele(nomModele, new ListenerObservateur() {
             @Override
             public void reagirNouveauModele(Modele modele) {
-                super.reagirNouveauModele(modele);
-
-                Log.d("Atelier07", "VPartie::reagirNouveauModele");
+                Log.d("Atelier07", "VPartie.reagirNouveauModele");
 
                 MPartie partie = (MPartie) modele;
 
@@ -62,7 +58,7 @@ public class VPartie extends Vue {
 
             @Override
             public void reagirChangementAuModele(Modele modele){
-                Log.d("Atelier07", "VPartie::reagirChangementAuModele");
+                Log.d("Atelier07", "VPartie.reagirChangementAuModele");
 
                 miseAJourGrille((MPartie) modele);
             }

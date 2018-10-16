@@ -41,9 +41,8 @@ public class VGrille extends GridLayout {
 
     @Override
     protected void onFinishInflate(){
-        Log.d("Atelier07", this.getClass().getSimpleName() + "::" + "onFinishInflate");
+        Log.d("Atelier07", this.getClass().getSimpleName() + "." + "onFinishInflate");
         super.onFinishInflate();
-
     }
 
     void creerGrille (int hauteur, int largeur){
@@ -81,11 +80,9 @@ public class VGrille extends GridLayout {
     }
 
     void afficherJetons(MGrille grille){
-
         List<MColonne> colonnes = grille.getColonnes();
 
-        for(int colonne = 0; colonne < colonnes.size(); ++colonne){
-
+        for(int colonne = 0; colonne < colonnes.size(); ++colonne) {
             MColonne colonneActuelle = colonnes.get(colonne);
 
             for(int rangee = 0; rangee < colonneActuelle.getJetons().size(); ++rangee){

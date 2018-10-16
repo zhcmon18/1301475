@@ -23,7 +23,6 @@ public class MColonne extends Modele {
 
     public void placerJeton(GCouleur couleur) {
         jetons.add(couleur);
-        //Log.d("Size", "" + jetons.size());
     }
 
     @Override

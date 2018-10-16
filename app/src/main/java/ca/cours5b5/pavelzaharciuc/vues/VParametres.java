@@ -137,7 +137,5 @@ public class VParametres extends Vue implements AdapterView.OnItemSelectedListen
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 }

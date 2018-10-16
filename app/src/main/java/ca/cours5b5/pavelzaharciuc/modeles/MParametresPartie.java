@@ -21,11 +21,9 @@ public class MParametresPartie extends Modele {
     public Integer pourGagner;
     protected final String __pourGagner = "pourGagner";
 
-
     public static MParametresPartie aPartirMParametres(MParametres mParametres) {
         MParametresPartie mParametresPartie;
         mParametresPartie = mParametres.getParametresPartie().cloner();
-
         return  mParametresPartie;
     }
 

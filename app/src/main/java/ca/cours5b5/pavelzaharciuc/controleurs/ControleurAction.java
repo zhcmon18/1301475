@@ -19,7 +19,6 @@ public class ControleurAction {
     private static List<Action> fileAttenteExecution;
 
     static {
-
         actions = new HashMap<>();
         fileAttenteExecution = new ArrayList<>();
 
@@ -37,7 +36,6 @@ public class ControleurAction {
 
         enregistrerFournisseur(fournisseur, commande, listenerFournisseur);
         executerActionsExecutables();
-
     }
 
     static void executerDesQuePossible(Action action) {
@@ -73,10 +71,9 @@ public class ControleurAction {
 
     private static void lancerObservationSiApplicable(Action action) {
         if (action.fournisseur instanceof Modele) {
-            Log.d("Atelier07",  "ControleurAction" + "." + "executerActionsExecutables");
+            Log.d("Atelier07",  "ControleurAction" + "." + "lancerObservationSiApplicable");
             ControleurObservation.lancerObservation((Modele) action.fournisseur);
         }
-
     }
 
     private static void enregistrerFournisseur(Fournisseur fournisseur, GCommande commande, ListenerFournisseur listenerFournisseur) {

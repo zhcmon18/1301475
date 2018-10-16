@@ -20,7 +20,7 @@ public class ControleurObservation {
     }
 
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur) {
-        Log.d("Atelier07", "ControleurObservation::observerModele");
+        Log.d("Atelier07", "ControleurObservation.observerModele");
 
         if(nomModele.equals("MParametres")) {
             observations.put(MParametres.instance, listenerObservateur);
@@ -41,6 +41,7 @@ public class ControleurObservation {
     }
 
     public static void lancerObservation (Modele modele) {
+        Log.d("Atelier07", "ControleurObservation.lancerObservation");
         ListenerObservateur listenerObservateur = observations.get(modele);
 
         if(listenerObservateur != null) {
