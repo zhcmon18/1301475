@@ -2,10 +2,14 @@ package ca.cours5b5.pavelzaharciuc.modeles;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.pavelzaharciuc.exceptions.ErreurSerialisation;
 import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 import ca.cours5b5.pavelzaharciuc.serialisation.AttributSerialisable;
@@ -16,13 +20,21 @@ public class MPartie extends Modele {
     public MParametresPartie parametres;
     private final String __parametres = "parametres";
 
+    @AttributSerialisable
+    public List<Integer> coups;
+    private final String __coups = "coups";
+
     private  MGrille grille;
     private GCouleur couleurCourante;
 
     public MPartie(MParametresPartie parametres){
         this.parametres = parametres;
-        initaliserCouleurCourante();
+
         grille = new MGrille(this.parametres.getLargeur());
+
+        coups = new ArrayList<>();
+
+        initaliserCouleurCourante();
         fournirActionPlacerJeton();
     }
 
@@ -41,6 +53,7 @@ public class MPartie extends Modele {
     }
 
     protected void jouerCoup(int colonne) {
+        coups.add(colonne);
         grille.placerJeton(colonne, couleurCourante);
         prochaineCouleurCourante();
 
@@ -63,8 +76,59 @@ public class MPartie extends Modele {
     }
 
     @Override
-    public void aPartirObjetJson(Map<String, Object> objetJson) {}
+    public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
+        List<String> listeCoupsJson = new ArrayList<>();
+
+        for(Map.Entry<String, Object> entry: objetJson.entrySet()) {
+            String cle = entry.getKey();
+
+            if(cle.equals(__parametres)) {
+                parametres.aPartirObjetJson((Map<String, Object>) entry.getValue());
+            } else if (cle.equals(__coups)) {
+                listeCoupsJson = (List<String>) entry.getValue();
+            }
+        }
+
+        grille = new MGrille(parametres.getLargeur());
+
+        initaliserCouleurCourante();
+
+        rejouerLesCoups(listeCoupsAPartirJSon(listeCoupsJson));
+    }
 
     @Override
-    public Map<String, Object> enObjetJson() {return null;}
+    public Map<String, Object> enObjetJson() throws ErreurSerialisation {
+        Map<String, Object> objetJson = new HashMap<>();
+
+        objetJson.put(__parametres, parametres.enObjetJson());
+        objetJson.put(__coups, listeCoupsEnObjetJson(coups));
+
+        return objetJson;
+    }
+
+    private void rejouerLesCoups(List<Integer> coupsARejouer) {
+        coups.clear();
+
+        for(Integer coup : coupsARejouer) {
+            jouerCoup(coup);
+        }
+    }
+
+    private List<Integer> listeCoupsAPartirJSon(List<String> listeCoupsObjetJson) {
+        final List<Integer> listeCoups = new ArrayList<>();
+
+        for (String coupJson : listeCoupsObjetJson) {
+            listeCoups.add(Integer.parseInt(coupJson));
+        }
+        return  listeCoups;
+    }
+
+    private List<String> listeCoupsEnObjetJson(List<Integer> listeCoups) {
+        final List<String> listeCoupsJson = new ArrayList<>();
+
+        for (Integer coup : listeCoups) {
+            listeCoupsJson.add(Integer.toString(coup));
+        }
+        return listeCoupsJson;
+    }
 }

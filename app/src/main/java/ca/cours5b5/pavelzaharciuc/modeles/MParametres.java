@@ -92,6 +92,10 @@ public class MParametres extends Modele {
         return listeChoix;
     }
 
+    public static MParametres getInstance() {
+        return instance;
+    }
+
     public List<Integer> getChoixHauteur() {
         return choixHauteur;
     }
@@ -110,7 +114,7 @@ public class MParametres extends Modele {
             String cle = entry.getKey();
 
             if (cle.equals(__parametresPartie)) {
-                parametresPartie.aPartirObjetJson((Map<String, Object>) entry);
+                parametresPartie.aPartirObjetJson((Map<String, Object>) entry.getValue());
             }
         }
     }
@@ -119,7 +123,7 @@ public class MParametres extends Modele {
     public Map<String, Object> enObjetJson() {
         Map<String, Object> objetJson = new HashMap<>();
 
-        objetJson.put(__parametresPartie, parametresPartie.enObjetJson());
+        objetJson.put(__parametresPartie, getParametresPartie().enObjetJson());
 
         return objetJson;
     }
