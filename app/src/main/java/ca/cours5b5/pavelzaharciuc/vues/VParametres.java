@@ -220,10 +220,10 @@ public class VParametres extends Vue {
     }
 
     private void mettreAJourAdapter(
-            Spinner spinner,
-            List<Integer> choix,
-            int selectionCourante,
-            ArrayAdapter<Integer> adapter) {
+        Spinner spinner,
+        List<Integer> choix,
+        int selectionCourante,
+        ArrayAdapter<Integer> adapter) {
 
         for(int i=0; i < choix.size(); i++){
 
@@ -237,5 +237,4 @@ public class VParametres extends Vue {
             }
         }
     }
-
 }
