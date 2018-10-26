@@ -1,15 +1,23 @@
 <resources>
-    <string name="app_name">PavelZaharciuc</string>
-    <string name="message">Hello!</string>
-    <string name="paysage">(landscape)</string>
-    <string name="portrait">(portrait)</string>
-    <string name="height_at2">Height:</string>
-    <string name="width_at2">Width:</string>
-    <string name="toWin_at2">To win:</string>
-    <string name="restore">restore</string>
-    <string name="save">save</string>
-    <string name="play">Play</string>
-    <string name="player1">Player 1</string>
-    <string name="player2">Player 2</string>
-    <string name="button_param">Parametres</string>
+
+    <string name="app_name" translatable="false">PavelZaharciuc</string>
+
+    <string name="bonjour">Bonjour!</string>
+
+    <string name="paysage">paysage</string>
+    <string name="portrait" translatable="false">portrait</string>
+
+    <string name="hauteur">Hauteur: </string>
+    <string name="largeur">Largeur: </string>
+    <string name="pour_gagner">Pour gagner: </string>
+
+    <string name="parametres">Parametres</string>
+
+    <string name="jouer">Jouer</string>
+
+    <string name="entete">↓\n↓</string>
+
+    <string name="joueur1">joueur1</string>
+    <string name="joueur2">joueur2</string>
+
 </resources>

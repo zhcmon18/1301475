@@ -1,7 +1,5 @@
 package ca.cours5b5.pavelzaharciuc.modeles;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +11,10 @@ public class MColonne extends Modele {
 
     private List<GCouleur> jetons;
 
-    public MColonne() {
+    public MColonne(){
+
         jetons = new ArrayList<>();
+
     }
 
     public List<GCouleur> getJetons() {
@@ -22,14 +22,27 @@ public class MColonne extends Modele {
     }
 
     public void placerJeton(GCouleur couleur) {
+
         jetons.add(couleur);
+
     }
 
     @Override
-    public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {}
+    public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
+
+        throw new UnsupportedOperationException();
+
+    }
 
     @Override
     public Map<String, Object> enObjetJson() throws ErreurSerialisation {
-        return null;
+
+        throw new UnsupportedOperationException();
+
     }
+
+    public int nombreDeJetons() {
+        return jetons.size();
+    }
+
 }

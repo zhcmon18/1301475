@@ -3,20 +3,25 @@ package ca.cours5b5.pavelzaharciuc.serialisation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class Jsonification {
+import ca.cours5b5.pavelzaharciuc.exceptions.ErreurSerialisation;
 
-    private static Gson gson = new GsonBuilder().create();
+public final class Jsonification {
 
-    public static Map<String, Object> enObjetJson(String json) {
-        Map<String, Object> objetJson = gson.fromJson(json, Map.class);
-        return objetJson;
+    private Jsonification(){}
+
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+    public static Map<String, Object> aPartirChaineJson(String json) throws ErreurSerialisation {
+
+        return gson.fromJson(json, Map.class);
+
     }
 
-    public static String enChaine(Map<String, Object> objetJson) {
+    public static String enChaineJson(Map<String, Object> objetJson) throws ErreurSerialisation {
+
         return gson.toJson(objetJson);
-    }
 
+    }
 }

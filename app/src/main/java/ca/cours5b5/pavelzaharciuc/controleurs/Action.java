@@ -1,6 +1,5 @@
 package ca.cours5b5.pavelzaharciuc.controleurs;
 
-import android.util.Log;
 
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
@@ -17,21 +16,19 @@ public class Action {
         this.args = args;
     }
 
-    public void executerDesQuePossible() {
-        Log.d("Atelier07",  this.getClass().getSimpleName() + "." + "executerDesQuePossible");
+    public void executerDesQuePossible(){
         ControleurAction.executerDesQuePossible(this);
     }
 
-     Action cloner() {
-        Action action = new Action();
+    Action cloner(){
 
-        action.fournisseur = this.fournisseur;
-        action.listenerFournisseur = this.listenerFournisseur;
+        Action clone = new Action();
 
-        if (args != null) {
-            action.setArguments(args.clone());
-        }
+        clone.fournisseur = fournisseur;
+        clone.listenerFournisseur = listenerFournisseur;
 
-        return action;
+        clone.args = (args == null) ? null : args.clone();
+
+        return clone;
     }
 }

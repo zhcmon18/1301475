@@ -2,12 +2,13 @@ package ca.cours5b5.pavelzaharciuc.modeles;
 
 import java.util.Map;
 
-import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.pavelzaharciuc.exceptions.ErreurSerialisation;
 
-public abstract class Modele implements Fournisseur {
 
-    public abstract void aPartirObjetJson(Map<String, Object> objetJson);
+public abstract class Modele {
 
-    public abstract Map<String, Object> enObjetJson();
+    public abstract void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation;
+
+    public abstract Map<String, Object> enObjetJson() throws ErreurSerialisation;
 
 }
