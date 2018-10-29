@@ -17,5 +17,9 @@
     <string name="joueur2">player2</string>
 
     <string name="login">Log in</string>
+    <string name="logout">Log out</string>
+
+    <string name="erase">Erase the current party</string>
+
 
 </resources>

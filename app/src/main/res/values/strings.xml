@@ -21,5 +21,8 @@
     <string name="joueur2">joueur2</string>
 
     <string name="login">Connexion</string>
+    <string name="logout">Déconnexion</string>
+
+    <string name="erase">Effacer la partie courrante</string>
 
 </resources>

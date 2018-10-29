@@ -5,7 +5,7 @@ android {
         debug {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('C:/Users/Pavel_Admin/AndroidStudioProjects/1301475/debug.jks')
+            storeFile file('/debug.jks')
             storePassword '123456'
         }
     }
@@ -39,8 +39,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-	implementation 'com.firebaseui:firebase-ui-database:3.3.1'
-	implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -2,13 +2,18 @@ package ca.cours5b5.pavelzaharciuc.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import ca.cours5b5.pavelzaharciuc.R;
+
+import ca.cours5b5.pavelzaharciuc.activites.AMenuPrincipal;
 import ca.cours5b5.pavelzaharciuc.controleurs.Action;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
 import ca.cours5b5.pavelzaharciuc.global.GCommande;
+import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
+
+
 
 
 public class VMenuPrincipal extends Vue {
@@ -19,8 +24,9 @@ public class VMenuPrincipal extends Vue {
     private Button boutonPartie;
     private Action actionPartie;
 
-    private Button boutonConnexion;
+    private Button boutonAuth;
     private Action actionConnexion;
+    private Action actionDeconnexion;
 
     public VMenuPrincipal(Context context) {
         super(context);
@@ -46,14 +52,13 @@ public class VMenuPrincipal extends Vue {
 
     }
 
-
     private void recupererControles() {
 
         boutonParametres = findViewById(R.id.bouton_parametres);
 
         boutonPartie = findViewById(R.id.bouton_partie);
 
-        boutonConnexion = findViewById((R.id.bouton_connexion));
+        boutonAuth = findViewById((R.id.bouton_auth));
 
     }
 
@@ -65,6 +70,7 @@ public class VMenuPrincipal extends Vue {
 
         actionConnexion = ControleurAction.demanderAction(GCommande.CONNEXION);
 
+        actionDeconnexion = ControleurAction.demanderAction(GCommande.DECONNEXION);
     }
 
 
@@ -74,8 +80,7 @@ public class VMenuPrincipal extends Vue {
 
         installerListenerPartie();
 
-        installerListenerConnexion();
-
+        installerListenerAuthent();
     }
 
     private void installerListenerPartie() {
@@ -100,13 +105,16 @@ public class VMenuPrincipal extends Vue {
 
     }
 
-    private void installerListenerConnexion() {
-        boutonConnexion.setOnClickListener(new OnClickListener() {
+    private void installerListenerAuthent() {
+        boutonAuth.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                actionConnexion.executerDesQuePossible();
+                if(!UsagerCourant.siUsagerConnecte()) {
+                    actionConnexion.executerDesQuePossible();
+                } else {
+                    actionDeconnexion.executerDesQuePossible();
+                }
             }
         });
     }
-
 }

@@ -36,12 +36,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bouton_connexion"
+        android:id="@+id/bouton_auth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/bouton_partie"
         app:layout_constraintEnd_toEndOf="@+id/bouton_partie"

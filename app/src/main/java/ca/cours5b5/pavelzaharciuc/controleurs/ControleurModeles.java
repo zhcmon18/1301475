@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.pavelzaharciuc.donnees.Serveur;
 import ca.cours5b5.pavelzaharciuc.donnees.SourceDeDonnees;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurModele;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
@@ -13,6 +14,7 @@ import ca.cours5b5.pavelzaharciuc.modeles.MParametresPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 import ca.cours5b5.pavelzaharciuc.donnees.Disque;
+import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
 
 public final class ControleurModeles {
 
@@ -30,6 +32,7 @@ public final class ControleurModeles {
 
         listeDeSauvegardes = new ArrayList<>();
         listeDeSauvegardes.add(Disque.getInstance());
+        listeDeSauvegardes.add(Serveur.getInstance());
 
     }
 
@@ -134,5 +137,9 @@ public final class ControleurModeles {
 
             }
         }
+    }
+
+    public static String getCheminSauvegarde(String nomModele) {
+        return nomModele + "/" + UsagerCourant.getId();
     }
 }

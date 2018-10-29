@@ -90,4 +90,18 @@
         app:layout_constraintStart_toStartOf="@+id/spinner_largeur"
         app:layout_constraintTop_toTopOf="@+id/texte_pour_gagner" />
 
+    <Button
+        android:id="@+id/bouton_detruire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/erase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_pour_gagner"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="@+id/spinner_pour_gagner"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_pour_gagner"
+        app:layout_constraintVertical_bias="0.53" />
+
 </ca.cours5b5.pavelzaharciuc.vues.VParametres>
