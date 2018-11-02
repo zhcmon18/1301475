@@ -2,6 +2,7 @@ package ca.cours5b5.pavelzaharciuc.activites;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
@@ -18,7 +19,8 @@ public class AParametres extends Activite implements Fournisseur{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parametres);
+
+        creerVue();
 
         fournirActions();
 
@@ -39,9 +41,18 @@ public class AParametres extends Activite implements Fournisseur{
         ControleurAction.fournirAction(this, GCommande.DETRUIRE_PARTIE, new ListenerFournisseur() {
             @Override
             public void executer(Object... args) {
-                Serveur.getInstance().detruireSauvegarde(MParametres.class.getSimpleName());
-                Serveur.getInstance().detruireSauvegarde(MPartie.class.getSimpleName());
+                ControleurModeles.detruireSauvegarde(MParametres.class.getSimpleName());
+                ControleurModeles.detruireSauvegarde(MPartie.class.getSimpleName());
+
+                ControleurModeles.detruireModele(MParametres.class.getSimpleName());
+                ControleurModeles.detruireModele(MPartie.class.getSimpleName());
+
+                creerVue();
             }
         });
+    }
+
+    private void creerVue () {
+        setContentView(R.layout.activity_parametres);
     }
 }

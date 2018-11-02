@@ -24,7 +24,7 @@ public class VMenuPrincipal extends Vue {
     private Button boutonPartie;
     private Action actionPartie;
 
-    private Button boutonAuth;
+    private static Button boutonAuth;
     private Action actionConnexion;
     private Action actionDeconnexion;
 
@@ -116,5 +116,9 @@ public class VMenuPrincipal extends Vue {
                 }
             }
         });
+    }
+
+    public static void modifierTexteBouton(String texte) {
+        boutonAuth.setText(texte);
     }
 }

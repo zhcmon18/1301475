@@ -19,12 +19,12 @@ import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GConstantes;
+import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
 import ca.cours5b5.pavelzaharciuc.vues.VMenuPrincipal;
 
 public class AMenuPrincipal extends Activite implements Fournisseur {
 
     private static List<AuthUI.IdpConfig> fournisseurDeConnexion;
-    private Button boutonAuth;
 
     static{
         fournisseurDeConnexion = new ArrayList<>();
@@ -38,10 +38,11 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        boutonAuth = findViewById(R.id.bouton_auth);
+        if(UsagerCourant.siUsagerConnecte()) {
+            VMenuPrincipal.modifierTexteBouton(getString(R.string.logout));
+        }
 
         fournirActions();
-
     }
 
     private void fournirActions() {
@@ -107,7 +108,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                boutonAuth.setText(getString(R.string.login));
+                VMenuPrincipal.modifierTexteBouton(getString(R.string.login));
             }
         });
     }
@@ -130,7 +131,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == GConstantes.CODE_CONNEXION_FIREBASE) {
             if(resultCode == RESULT_OK) {
-                boutonAuth.setText(getString(R.string.logout));
+                VMenuPrincipal.modifierTexteBouton(getString(R.string.logout));
                 Log.d("Atelier11", "onActivityResult: réussie");
             } else {
                 Log.d("Atelier11", "onActivityResult: échouée");

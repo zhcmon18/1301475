@@ -80,12 +80,14 @@ public final class Disque extends SourceDeDonnees {
     }
 
     @Override
-    public void detruireSauvegarde(String cheminSauvegarde) {}
+    public void detruireSauvegarde(String cheminSauvegarde) {
+        getFichier(cheminSauvegarde).delete();
+    }
 
 
-    private File getFichier(String nomModele) {
+    private File getFichier(String cheminSauvegarde) {
 
-        String nomFichier = getNomFichier(nomModele);
+        String nomFichier = getNomFichier(super.getNomModele(cheminSauvegarde));
 
         return new File(repertoireRacine, nomFichier);
 

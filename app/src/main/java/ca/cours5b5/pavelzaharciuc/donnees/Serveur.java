@@ -22,6 +22,32 @@ public class Serveur extends SourceDeDonnees {
         noeud.setValue(objetJson);
     }
 
+    /*
+    @Override
+    public Map<String, Object> chargerModele(String cheminSauvegarde, final ListenerServeur listenerServeur) {
+        DatabaseReference noeud =
+                FirebaseDatabase.getInstance().getReference(ControleurModeles.getCheminSauvegarde(cheminSauvegarde));
+
+        noeud.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot != null) {
+                    Map<String, Object> objetJson = dataSnapshot.getValue(Map.class);
+
+
+                    listenerServeur.reagirCharge(objetJson);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return null;
+    }
+    */
+
     @Override
     public Map<String, Object> chargerModele(String cheminSauvegarde) {
         return null;

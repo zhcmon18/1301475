@@ -10,7 +10,6 @@ import ca.cours5b5.pavelzaharciuc.donnees.Serveur;
 import ca.cours5b5.pavelzaharciuc.donnees.SourceDeDonnees;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurModele;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
-import ca.cours5b5.pavelzaharciuc.modeles.MParametresPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 import ca.cours5b5.pavelzaharciuc.donnees.Disque;
@@ -25,6 +24,8 @@ public final class ControleurModeles {
     private static SourceDeDonnees[] sequenceDeChargement;
 
     private static List<SourceDeDonnees> listeDeSauvegardes;
+
+    private static Map<String, Object> objetJson = new HashMap<>();
 
     static {
 
@@ -50,8 +51,16 @@ public final class ControleurModeles {
 
             Map<String, Object> objetJson = modele.enObjetJson();
 
-            sourceDeDonnees.sauvegarderModele(nomModele, objetJson);
+            sourceDeDonnees.sauvegarderModele(getCheminSauvegarde(nomModele), objetJson);
 
+        }
+    }
+
+    public static void detruireSauvegarde(String nomModele) {
+        String cheminSauvegarde = getCheminSauvegarde(nomModele);
+
+        for(SourceDeDonnees source : listeDeSauvegardes ) {
+            source.detruireSauvegarde(cheminSauvegarde);
         }
     }
 
@@ -85,11 +94,11 @@ public final class ControleurModeles {
                 break;
 
             }
-
         }
 
         return modele;
     }
+
 
     public static void sauvegarderModele(String nomModele) throws ErreurModele {
 

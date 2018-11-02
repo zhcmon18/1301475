@@ -6,7 +6,6 @@ import android.os.Bundle;
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurModeles;
 import ca.cours5b5.pavelzaharciuc.donnees.SauvegardeTemporaire;
-import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
 
 public class APartie extends Activite {
