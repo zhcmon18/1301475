@@ -1,9 +1,15 @@
 package ca.cours5b5.pavelzaharciuc.donnees;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
+
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurModeles;
+import ca.cours5b5.pavelzaharciuc.exceptions.ErreurModele;
 
 public class Serveur extends SourceDeDonnees {
 
@@ -22,35 +28,29 @@ public class Serveur extends SourceDeDonnees {
         noeud.setValue(objetJson);
     }
 
-    /*
+
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde, final ListenerServeur listenerServeur) {
+    public void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement ) {
         DatabaseReference noeud =
                 FirebaseDatabase.getInstance().getReference(ControleurModeles.getCheminSauvegarde(cheminSauvegarde));
 
         noeud.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot != null) {
-                    Map<String, Object> objetJson = dataSnapshot.getValue(Map.class);
+                if(dataSnapshot.exists()) {
+                    Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
 
-
-                    listenerServeur.reagirCharge(objetJson);
+                    listenerChargement.reagirSucces(objetJson);
+                } else {
+                    listenerChargement.reagirErreur(new ErreurModele("Il n'y a pas de données dans cette source."));
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                listenerChargement.reagirErreur(new ErreurModele(databaseError.getMessage()));
             }
         });
-        return null;
-    }
-    */
-
-    @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
-        return null;
     }
 
     @Override

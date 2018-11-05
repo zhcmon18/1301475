@@ -11,6 +11,7 @@ import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 public class MGrille extends Modele  {
 
     private List<MColonne> colonnes;
+    private GCouleur couleurCourante;
 
     public MGrille(int largeur){
 
@@ -55,4 +56,11 @@ public class MGrille extends Modele  {
 
     }
 
+    public GCouleur getCouleurCourante() {
+        return couleurCourante;
+    }
+
+    public void setCouleurCourante(GCouleur couleurCourante) {
+        this.couleurCourante = couleurCourante;
+    }
 }

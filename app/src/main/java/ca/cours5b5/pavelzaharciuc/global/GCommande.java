@@ -18,4 +18,6 @@ public enum GCommande {
 
     DETRUIRE_PARTIE,
 
+    OBTENIR_COULEUR,
+
 }

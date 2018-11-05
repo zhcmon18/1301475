@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerGetModele;
 import ca.cours5b5.pavelzaharciuc.donnees.Serveur;
 import ca.cours5b5.pavelzaharciuc.donnees.SourceDeDonnees;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurModele;
@@ -25,7 +26,6 @@ public final class ControleurModeles {
 
     private static List<SourceDeDonnees> listeDeSauvegardes;
 
-    private static Map<String, Object> objetJson = new HashMap<>();
 
     static {
 
@@ -36,6 +36,53 @@ public final class ControleurModeles {
         listeDeSauvegardes.add(Serveur.getInstance());
 
     }
+
+
+    private static void creerModeleEtChargerDonnees(final String nomModele, final ListenerGetModele listenerGetModele) {
+        creerModeleSelonNom(nomModele, new ListenerGetModele() {
+            @Override
+            public void reagirAuModele(Modele modele) {
+                chargerDonnees(modele, nomModele, listenerGetModele);
+                modelesEnMemoire.put(nomModele, modele);
+            }
+        });
+
+    }
+
+    private static void chargerDonnees(Modele modele, String nomModele, ListenerGetModele listenerGetModele) {
+
+    }
+
+    private static void chargementViaSequence(Modele modele, String cheminSauvegarde, ListenerGetModele listenerGetModele,
+                                              int indiceSourceCourante) {
+
+
+    }
+
+    private static void chargementViaSourceCourranteOuSouvante(final Modele modele,
+                                                               final String cheminDeSauvegarde,
+                                                               final ListenerGetModele listenerGetModele,
+                                                               final int indiceSourceCourante) {
+
+    }
+
+    static void getModele(String nomModele, ListenerGetModele listenerGetModele) {
+        Modele modele = modelesEnMemoire.get(nomModele);
+
+        if(modele != null) {
+            creerModeleEtChargerDonnees(nomModele, listenerGetModele);
+        } else {
+            listenerGetModele.reagirAuModele(modele);
+        }
+    }
+
+    private static void creerModeleSelonNom(final String nomModele,
+                                            final ListenerGetModele listenerGetModele) throws ErreurModele {
+
+
+    }
+
+
 
     public static void setSequenceDeChargement(SourceDeDonnees... sequenceDeChargement){
 
@@ -86,7 +133,7 @@ public final class ControleurModeles {
 
         for(SourceDeDonnees sourceDeDonnees : sequenceDeChargement){
 
-            Map<String, Object> objetJson = sourceDeDonnees.chargerModele(nomModele);
+            /*Map<String, Object> objetJson = sourceDeDonnees.chargerModele(nomModele);
 
             if(objetJson != null){
 
@@ -94,6 +141,7 @@ public final class ControleurModeles {
                 break;
 
             }
+            */
         }
 
         return modele;

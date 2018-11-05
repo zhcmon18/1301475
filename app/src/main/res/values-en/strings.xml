@@ -16,6 +16,9 @@
     <string name="joueur1">player1</string>
     <string name="joueur2">player2</string>
 
+    <string name="joueur1Land">p\nl\na\ny\ne\nr\n1</string>
+    <string name="joueur2Land">p\nl\na\ny\ne\nr\n2</string>
+
     <string name="login">Log in</string>
     <string name="logout">Log out</string>
 

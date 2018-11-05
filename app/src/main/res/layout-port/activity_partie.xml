@@ -10,10 +10,10 @@
         android:id="@+id/grille"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,30 +22,22 @@
     </ca.cours5b5.pavelzaharciuc.vues.VGrille>
 
     <TextView
-        android:id="@+id/texte_joueur_un"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/texte_joueur"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/joueur1"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/texte_joueur_deux"
-        app:layout_constraintStart_toStartOf="@+id/grille"
-        app:layout_constraintTop_toBottomOf="@+id/grille" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grille"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/texte_joueur_deux"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/joueur2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/grille"
-        app:layout_constraintStart_toEndOf="@+id/texte_joueur_un"
-        app:layout_constraintTop_toBottomOf="@+id/grille" />
 </ca.cours5b5.pavelzaharciuc.vues.VPartie>

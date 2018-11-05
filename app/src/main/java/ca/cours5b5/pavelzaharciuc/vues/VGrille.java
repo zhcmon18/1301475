@@ -2,12 +2,12 @@ package ca.cours5b5.pavelzaharciuc.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import ca.cours5b5.pavelzaharciuc.controleurs.Action;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
@@ -15,7 +15,6 @@ import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 import ca.cours5b5.pavelzaharciuc.modeles.MColonne;
 import ca.cours5b5.pavelzaharciuc.modeles.MGrille;
-
 
 public class VGrille extends GridLayout {
 
@@ -41,6 +40,7 @@ public class VGrille extends GridLayout {
 
     private List<VEntete> entetes;
 
+    private GCouleur couleurCourante;
 
     @Override
     protected void onFinishInflate() {
@@ -64,7 +64,6 @@ public class VGrille extends GridLayout {
         colonnesDeCases = new ArrayList<>();
 
         entetes = new ArrayList<>();
-
     }
 
 
@@ -136,6 +135,8 @@ public class VGrille extends GridLayout {
 
                 actionEntete.setArguments(entete.getColonne());
                 actionEntete.executerDesQuePossible();
+
+                VPartie.setCouleurJoueur(couleurCourante);
                 
             }
         });
@@ -182,6 +183,8 @@ public class VGrille extends GridLayout {
 
     void afficherJetons(MGrille grille){
 
+        couleurCourante = grille.getCouleurCourante();
+
         List<MColonne> colonnes = grille.getColonnes();
 
         for(int numeroColonne=0; numeroColonne < colonnes.size(); numeroColonne++){
@@ -204,4 +207,7 @@ public class VGrille extends GridLayout {
 
     }
 
+    public GCouleur getCouleurCourante() {
+        return couleurCourante;
+    }
 }

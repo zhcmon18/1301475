@@ -3,6 +3,7 @@ package ca.cours5b5.pavelzaharciuc.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;
@@ -38,6 +39,7 @@ public class VCase extends AppCompatButton {
     private void initialiser() {
 
         changerCouleurDeFond(R.color.VIDE);
+        setEnabled(false);
 
     }
 
@@ -52,12 +54,10 @@ public class VCase extends AppCompatButton {
         switch (jeton){
 
             case ROUGE:
-
                 changerCouleurDeFond(R.color.ROUGE);
                 break;
 
             case JAUNE:
-
                 changerCouleurDeFond(R.color.JAUNE);
                 break;
         }

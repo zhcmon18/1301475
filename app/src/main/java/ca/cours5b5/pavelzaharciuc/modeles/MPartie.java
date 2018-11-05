@@ -88,6 +88,8 @@ public class MPartie extends Modele implements Fournisseur {
 
             prochaineCouleurCourante();
 
+            grille.setCouleurCourante(couleurCourante);
+
         }
     }
 

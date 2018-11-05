@@ -3,11 +3,13 @@ package ca.cours5b5.pavelzaharciuc.vues;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.TextView;
 
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurObservation;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurObservation;
+import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametresPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.Modele;
@@ -15,7 +17,8 @@ import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 
 public class VPartie extends Vue {
 
-    private VGrille grille;
+    private static TextView textViewJoueur;
+    private static VGrille grille;
 
     public VPartie(Context context) {
         super(context);
@@ -40,9 +43,9 @@ public class VPartie extends Vue {
     }
 
     private void initialiser() {
+        textViewJoueur = findViewById(R.id.texte_joueur);
 
         grille = findViewById(R.id.grille);
-
     }
 
     private void observerPartie() {
@@ -97,6 +100,41 @@ public class VPartie extends Vue {
 
         grille.afficherJetons(partie.getGrille());
 
+        setCouleurJoueur(grille.getCouleurCourante());
+
     }
 
+
+    public static  void setCouleurJoueur(GCouleur couleurCourante) {
+
+        if(couleurCourante == null || couleurCourante == GCouleur.ROUGE) {
+            textViewJoueur.setBackgroundColor(grille.getResources().getColor(R.color.ROUGE, null));
+            setTexteJoueur(1);
+
+        } else if(couleurCourante == GCouleur.JAUNE) {
+            textViewJoueur.setBackgroundColor(grille.getResources().getColor(R.color.JAUNE, null));
+            setTexteJoueur(2);
+        }
+    }
+
+    private static  void setTexteJoueur(int joueur) {
+
+        if(grille.getResources().getBoolean(R.bool.si_portrait)) {
+
+            if(joueur == 1) {
+                textViewJoueur.setText(grille.getResources().getString(R.string.joueur1));
+
+            } else {
+                textViewJoueur.setText(grille.getResources().getString(R.string.joueur2));
+            }
+
+        } else {
+            if(joueur == 1) {
+                textViewJoueur.setText(grille.getResources().getString(R.string.joueur1Land));
+
+            } else {
+                textViewJoueur.setText(grille.getResources().getString(R.string.joueur2Land));
+            }
+        }
+    }
 }
