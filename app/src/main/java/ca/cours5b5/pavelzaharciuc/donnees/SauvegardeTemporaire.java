@@ -1,6 +1,7 @@
 package ca.cours5b5.pavelzaharciuc.donnees;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Map;
 
@@ -37,6 +38,7 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
+        Log.d("Atelier11", "sauvegarderModele: sauvegardeTemporaire ");
         if(bundle != null){
 
             String json = Jsonification.enChaineJson(objetJson);

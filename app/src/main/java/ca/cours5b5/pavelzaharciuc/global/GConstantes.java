@@ -19,4 +19,7 @@ public final class GConstantes {
 
     public static final int CODE_CONNEXION_FIREBASE =  123;
 
+    public static final int JOUEUR_1 =  1;
+    public static final int JOUEUR_2 = 2;
+
 }

@@ -32,7 +32,7 @@ public class Serveur extends SourceDeDonnees {
     @Override
     public void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement ) {
         DatabaseReference noeud =
-                FirebaseDatabase.getInstance().getReference(ControleurModeles.getCheminSauvegarde(cheminSauvegarde));
+                FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
 
         noeud.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

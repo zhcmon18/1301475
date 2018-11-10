@@ -9,6 +9,7 @@ import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurObservation;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurObservation;
+import ca.cours5b5.pavelzaharciuc.global.GConstantes;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametresPartie;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
@@ -109,11 +110,11 @@ public class VPartie extends Vue {
 
         if(couleurCourante == null || couleurCourante == GCouleur.ROUGE) {
             textViewJoueur.setBackgroundColor(grille.getResources().getColor(R.color.ROUGE, null));
-            setTexteJoueur(1);
+            setTexteJoueur(GConstantes.JOUEUR_1);
 
         } else if(couleurCourante == GCouleur.JAUNE) {
             textViewJoueur.setBackgroundColor(grille.getResources().getColor(R.color.JAUNE, null));
-            setTexteJoueur(2);
+            setTexteJoueur(GConstantes.JOUEUR_2);
         }
     }
 
@@ -121,18 +122,18 @@ public class VPartie extends Vue {
 
         if(grille.getResources().getBoolean(R.bool.si_portrait)) {
 
-            if(joueur == 1) {
+            if(joueur == GConstantes.JOUEUR_1) {
                 textViewJoueur.setText(grille.getResources().getString(R.string.joueur1));
 
-            } else {
+            } else if (joueur == GConstantes.JOUEUR_2) {
                 textViewJoueur.setText(grille.getResources().getString(R.string.joueur2));
             }
 
         } else {
-            if(joueur == 1) {
+            if(joueur == GConstantes.JOUEUR_1) {
                 textViewJoueur.setText(grille.getResources().getString(R.string.joueur1Land));
 
-            } else {
+            } else if (joueur == GConstantes.JOUEUR_2){
                 textViewJoueur.setText(grille.getResources().getString(R.string.joueur2Land));
             }
         }
