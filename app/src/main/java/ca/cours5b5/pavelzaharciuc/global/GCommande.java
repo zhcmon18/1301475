@@ -20,4 +20,7 @@ public enum GCommande {
 
     OBTENIR_COULEUR,
 
+    JOINDRE_OU_CREER_PARTIE_RESEAU,
+    RECEVOIR_COUP_RESEAU,
+
 }

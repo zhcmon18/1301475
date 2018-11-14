@@ -30,7 +30,7 @@ public final class GConstantes {
     public static final String CLE_COUPS_JOUEUR_HOTE  = "coupsJoueurHote";
     public static final String CLE_COUPS_JOUEUR_INVITE  = "coupsJoueurInvite";
 
-    //public static final String FIXME_JSON_PARTIE_RESEAU = "{\"listeCoups\":[],\"parametres\":{\largeur\":\"7\", \"pourGagner\":\"4\",\"hauteur\":\"6\"},\" + C "}"
+    public static final String FIXME_JSON_PARTIE_RESEAU = "{\"listeCoups\":[], \"parametres\":{\"largeur\":\"7\",\"pourGagner\":\"4\",\"hauteur\":\"6\"},\"idJoueurInvite\":\"XS6OeTq1jSh5OwxQJcnIfzpvvi23\",\"idJoueurHote\":\"yKg1ekbUaFem5ugYu6TkEPM0sGh2\"}";
 
 
 

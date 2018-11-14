@@ -19,6 +19,7 @@ import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GConstantes;
+import ca.cours5b5.pavelzaharciuc.modeles.MPartieReseau;
 import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
 import ca.cours5b5.pavelzaharciuc.vues.VMenuPrincipal;
 
@@ -54,6 +55,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         fournirActionConnexion();
 
         fournirActionDeconnexion();
+
+        fournirActionJoindreOuCreerPartieReseau();
     }
 
 
@@ -99,6 +102,18 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                 });
     }
 
+
+    private void fournirActionJoindreOuCreerPartieReseau() {
+        ControleurAction.fournirAction(this,
+                GCommande.JOINDRE_OU_CREER_PARTIE_RESEAU,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+                        transitionPartieReseau();
+                    }
+        });
+    }
+
     private void connexion() {
         Intent intentionConnexion = AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(fournisseurDeConnexion).build();
         startActivityForResult(intentionConnexion, GConstantes.CODE_CONNEXION_FIREBASE);
@@ -125,6 +140,13 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         Intent intentionParametres = new Intent(this, APartie.class);
         startActivity(intentionParametres);
 
+    }
+
+    private void transitionPartieReseau() {
+        Intent intentionPartieReseau = new Intent(this, APartieReseau.class);
+
+        intentionPartieReseau.putExtra(MPartieReseau.class.getSimpleName(), GConstantes.FIXME_JSON_PARTIE_RESEAU);
+        startActivity(intentionPartieReseau);
     }
 
     @Override

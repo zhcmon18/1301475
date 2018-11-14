@@ -51,7 +51,7 @@ public class VPartie extends Vue {
 
     private void observerPartie() {
 
-        ControleurObservation.observerModele(MPartie.class.getSimpleName(),
+        ControleurObservation.observerModele(getNomModele(),
                 new ListenerObservateur() {
                     @Override
                     public void reagirNouveauModele(Modele modele) {
@@ -103,6 +103,10 @@ public class VPartie extends Vue {
 
         setCouleurJoueur(grille.getCouleurCourante());
 
+    }
+
+    protected String getNomModele() {
+        return MPartie.class.getSimpleName();
     }
 
 
