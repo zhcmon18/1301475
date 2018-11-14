@@ -25,8 +25,9 @@ public abstract class Activite extends AppCompatActivity {
 
         ControleurModeles.setSequenceDeChargement(
                 new SauvegardeTemporaire(savedInstanceState),
-                Disque.getInstance(),
-                Serveur.getInstance());
+                Serveur.getInstance(),
+                Disque.getInstance());
+
         
     }
 

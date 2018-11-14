@@ -33,8 +33,8 @@ public final class ControleurModeles {
         modelesEnMemoire = new HashMap<>();
 
         listeDeSauvegardes = new ArrayList<>();
-        listeDeSauvegardes.add(Disque.getInstance());
         listeDeSauvegardes.add(Serveur.getInstance());
+        listeDeSauvegardes.add(Disque.getInstance());
 
     }
 
