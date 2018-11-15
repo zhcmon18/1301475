@@ -3,7 +3,6 @@ package ca.cours5b5.pavelzaharciuc.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;

@@ -18,7 +18,6 @@ public class MGrille extends Modele  {
         colonnes = new ArrayList<>();
 
         initialiserColonnes(largeur);
-
     }
 
     private void initialiserColonnes(int largeur) {
@@ -63,4 +62,5 @@ public class MGrille extends Modele  {
     public void setCouleurCourante(GCouleur couleurCourante) {
         this.couleurCourante = couleurCourante;
     }
+
 }

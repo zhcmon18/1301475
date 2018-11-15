@@ -31,4 +31,8 @@ public class Action {
 
         return clone;
     }
+
+    public boolean actionExecutable() {
+        return listenerFournisseur.actionExecutable(args);
+    }
 }

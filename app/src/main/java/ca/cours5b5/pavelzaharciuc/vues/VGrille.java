@@ -5,9 +5,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import ca.cours5b5.pavelzaharciuc.controleurs.Action;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
@@ -15,6 +17,7 @@ import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.global.GCouleur;
 import ca.cours5b5.pavelzaharciuc.modeles.MColonne;
 import ca.cours5b5.pavelzaharciuc.modeles.MGrille;
+import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
 
 public class VGrille extends GridLayout {
 
@@ -50,8 +53,10 @@ public class VGrille extends GridLayout {
 
         demanderActionEntete();
 
-
     }
+
+
+
 
     private void demanderActionEntete() {
 
@@ -104,6 +109,15 @@ public class VGrille extends GridLayout {
 
             entetes.add(entete);
 
+            if(!MPartie.getColonnesADesactiver().isEmpty()) {
+
+                for (Integer col : MPartie.getColonnesADesactiver()) {
+                    if(col == entete.getColonne()) {
+                        entete.setEnabled(false);
+                    }
+                }
+            }
+
             installerListenerEntete(entete);
 
         }
@@ -134,10 +148,13 @@ public class VGrille extends GridLayout {
             public void onClick(View v) {
 
                 actionEntete.setArguments(entete.getColonne());
+
                 actionEntete.executerDesQuePossible();
 
                 VPartie.setCouleurJoueur(couleurCourante);
-                
+
+                desactiverEntete(entete);
+
             }
         });
 
@@ -209,5 +226,16 @@ public class VGrille extends GridLayout {
 
     public GCouleur getCouleurCourante() {
         return couleurCourante;
+    }
+
+    private void desactiverEntete(VEntete entete) {
+        if(!actionEntete.actionExecutable()) {
+            entete.setEnabled(false);
+
+            MPartie.getColonnesADesactiver().add(entete.getColonne());
+
+            ViewGroup view = VGrille.this;
+            view.invalidate();
+        }
     }
 }

@@ -34,4 +34,5 @@ public class APartie extends Activite {
                 new SauvegardeTemporaire(outState));
 
     }
+
 }

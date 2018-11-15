@@ -1,5 +1,7 @@
 package ca.cours5b5.pavelzaharciuc.modeles;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +28,9 @@ public class MPartie extends Modele implements Fournisseur {
 
     private MGrille grille;
     private GCouleur couleurCourante;
+
+
+    private static List<Integer> colonnesADesactiver = new ArrayList<>();
 
     public MPartie(MParametresPartie parametres){
 
@@ -62,18 +67,25 @@ public class MPartie extends Modele implements Fournisseur {
                 new ListenerFournisseur() {
                     @Override
                     public void executer(Object... args) {
+
                         try{
+                             int colonne = (Integer) args[0];
 
-                            int colonne = (Integer) args[0];
+                             jouerCoup(colonne);
 
-                            jouerCoup(colonne);
 
 
                         }catch(ClassCastException e){
 
                             throw new ErreurAction(e);
-
                         }
+                    }
+
+                    @Override
+                    public boolean actionExecutable(Object... args) {
+
+                        return !dernierCoup((int) args[0]);
+
                     }
                 });
     }
@@ -81,7 +93,6 @@ public class MPartie extends Modele implements Fournisseur {
     protected void jouerCoup(int colonne) {
 
         if(siCoupLegal(colonne)){
-
             listeCoups.add(colonne);
 
             grille.placerJeton(colonne, couleurCourante);
@@ -99,6 +110,12 @@ public class MPartie extends Modele implements Fournisseur {
 
         return mColonne.nombreDeJetons() < parametres.getHauteur();
 
+    }
+
+    private  boolean dernierCoup(int colonne) {
+        MColonne mColonne = grille.getColonnes().get(colonne);
+
+        return mColonne.nombreDeJetons() + 1 > parametres.getHauteur();
     }
 
     private void prochaineCouleurCourante(){
@@ -194,6 +211,8 @@ public class MPartie extends Modele implements Fournisseur {
 
     }
 
-
+    public static List<Integer> getColonnesADesactiver() {
+        return colonnesADesactiver;
+    }
 
 }
