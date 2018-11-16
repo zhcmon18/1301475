@@ -2,7 +2,6 @@ package ca.cours5b5.pavelzaharciuc.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,9 +108,9 @@ public class VGrille extends GridLayout {
 
             entetes.add(entete);
 
-            if(!MPartie.getColonnesADesactiver().isEmpty()) {
+            if(!MPartie.getListeColonnesADesactiver().isEmpty()) {
 
-                for (Integer col : MPartie.getColonnesADesactiver()) {
+                for (Integer col : MPartie.getListeColonnesADesactiver()) {
                     if(col == entete.getColonne()) {
                         entete.setEnabled(false);
                     }
@@ -232,7 +231,7 @@ public class VGrille extends GridLayout {
         if(!actionEntete.actionExecutable()) {
             entete.setEnabled(false);
 
-            MPartie.getColonnesADesactiver().add(entete.getColonne());
+            MPartie.getListeColonnesADesactiver().add(entete.getColonne());
 
             ViewGroup view = VGrille.this;
             view.invalidate();

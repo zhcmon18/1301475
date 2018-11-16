@@ -1,7 +1,5 @@
 package ca.cours5b5.pavelzaharciuc.modeles;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,8 +27,8 @@ public class MPartie extends Modele implements Fournisseur {
     private MGrille grille;
     private GCouleur couleurCourante;
 
-
-    private static List<Integer> colonnesADesactiver = new ArrayList<>();
+    private static List<Integer> listeColonnesADesactiver = new ArrayList<>();
+    private final String __listeColonnesADesactiver = "listeColonnesADesactiver";
 
     public MPartie(MParametresPartie parametres){
 
@@ -152,12 +150,17 @@ public class MPartie extends Modele implements Fournisseur {
 
         List<String> listeCoupsObjetJson = (List<String>) objetJson.get(__listeCoups);
 
-        if(listeCoupsObjetJson != null){
+        List<String> listeColonnesADesactiver = (List<String>) objetJson.get(__listeColonnesADesactiver);
+
+        if(listeCoupsObjetJson != null && listeColonnesADesactiver != null){
 
             List<Integer> coupsARejouer = listeCoupsAPartirJson(listeCoupsObjetJson);
             rejouerLesCoups(coupsARejouer);
 
+            this.listeColonnesADesactiver = listeCoupsAPartirJson((listeColonnesADesactiver));
+
         }
+
     }
 
 
@@ -192,6 +195,7 @@ public class MPartie extends Modele implements Fournisseur {
 
         objetJson.put(__parametres, parametres.enObjetJson());
         objetJson.put(__listeCoups, listeCoupsEnObjetJson(listeCoups));
+        objetJson.put(__listeColonnesADesactiver, listeCoupsEnObjetJson(getListeColonnesADesactiver()));
 
         return objetJson;
 
@@ -211,8 +215,13 @@ public class MPartie extends Modele implements Fournisseur {
 
     }
 
-    public static List<Integer> getColonnesADesactiver() {
-        return colonnesADesactiver;
+
+    public static List<Integer> getListeColonnesADesactiver() {
+        return listeColonnesADesactiver;
+    }
+
+    public void viderListeColonnesADesactiver() {
+        listeColonnesADesactiver.clear();
     }
 
 }
