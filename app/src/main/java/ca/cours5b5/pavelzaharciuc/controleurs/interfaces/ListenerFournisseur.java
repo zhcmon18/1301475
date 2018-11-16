@@ -6,6 +6,6 @@ public abstract class ListenerFournisseur {
     public abstract void executer(Object... args);
 
     public boolean actionExecutable(Object... args) {
-        return false;
+        return true;
     }
 }

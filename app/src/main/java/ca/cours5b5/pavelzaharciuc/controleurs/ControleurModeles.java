@@ -197,7 +197,10 @@ public final class ControleurModeles {
             if(modele instanceof Fournisseur){
 
                 ControleurAction.oublierFournisseur((Fournisseur) modele);
+            }
 
+            if(modele instanceof  MPartie) {
+                ((MPartie) modele).viderListeColonnesADesactiver();
             }
         }
     }

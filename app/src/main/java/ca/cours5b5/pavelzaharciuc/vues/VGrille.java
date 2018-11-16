@@ -108,17 +108,19 @@ public class VGrille extends GridLayout {
 
             entetes.add(entete);
 
-            if(!MPartie.getListeColonnesADesactiver().isEmpty()) {
-
-                for (Integer col : MPartie.getListeColonnesADesactiver()) {
-                    if(col == entete.getColonne()) {
-                        entete.setEnabled(false);
-                    }
-                }
-            }
-
             installerListenerEntete(entete);
 
+        }
+    }
+
+    public void desactiverOuActiverEntetes(VEntete entete) {
+        if(!MPartie.getListeColonnesADesactiver().isEmpty()) {
+
+            for (Integer col : MPartie.getListeColonnesADesactiver()) {
+                if(col == entete.getColonne()) {
+                    entete.setEnabled(false);
+                }
+            }
         }
     }
 
@@ -228,7 +230,10 @@ public class VGrille extends GridLayout {
     }
 
     private void desactiverEntete(VEntete entete) {
-        if(!actionEntete.actionExecutable()) {
+
+        //actionEntete.setArguments(entete.getColonne());
+
+        if (!actionEntete.actionExecutable()) {
             entete.setEnabled(false);
 
             MPartie.getListeColonnesADesactiver().add(entete.getColonne());
@@ -236,5 +241,9 @@ public class VGrille extends GridLayout {
             ViewGroup view = VGrille.this;
             view.invalidate();
         }
+    }
+
+    public List<VEntete> getEntetes() {
+        return entetes;
     }
 }

@@ -10,7 +10,7 @@ public class MPartieReseau extends MPartie implements Fournisseur, Identifiable 
 
     @AttributSerialisable
     public String idJoueurInvite;
-    private String __idJoueurInvite;
+    private String __idJoueurInvite = "";
 
     @AttributSerialisable
     public String idJoueurHote;

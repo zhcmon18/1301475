@@ -71,8 +71,6 @@ public class MPartie extends Modele implements Fournisseur {
 
                              jouerCoup(colonne);
 
-
-
                         }catch(ClassCastException e){
 
                             throw new ErreurAction(e);

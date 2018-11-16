@@ -103,6 +103,10 @@ public class VPartie extends Vue {
 
         setCouleurJoueur(grille.getCouleurCourante());
 
+        for (VEntete entete : grille.getEntetes()) {
+            grille.desactiverOuActiverEntetes(entete);
+        }
+
     }
 
     protected String getNomModele() {
