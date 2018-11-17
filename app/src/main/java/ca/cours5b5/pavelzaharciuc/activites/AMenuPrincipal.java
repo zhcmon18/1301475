@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.firebase.ui.auth.AuthUI;
@@ -124,6 +125,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 VMenuPrincipal.modifierTexteBouton(getString(R.string.login));
+                VMenuPrincipal.afficherOuCacherBoutonReseau(View.GONE);
             }
         });
     }
@@ -154,6 +156,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         if(requestCode == GConstantes.CODE_CONNEXION_FIREBASE) {
             if(resultCode == RESULT_OK) {
                 VMenuPrincipal.modifierTexteBouton(getString(R.string.logout));
+                VMenuPrincipal.afficherOuCacherBoutonReseau(View.VISIBLE);
                 Log.d("Atelier11", "onActivityResult: réussie");
             } else {
                 Log.d("Atelier11", "onActivityResult: échouée");

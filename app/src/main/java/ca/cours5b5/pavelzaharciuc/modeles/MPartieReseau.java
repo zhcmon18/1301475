@@ -2,22 +2,28 @@ package ca.cours5b5.pavelzaharciuc.modeles;
 
 import java.util.Map;
 
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurAction;
+import ca.cours5b5.pavelzaharciuc.controleurs.ControleurPartieReseau;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.pavelzaharciuc.exceptions.ErreurAction;
 import ca.cours5b5.pavelzaharciuc.exceptions.ErreurSerialisation;
+import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.serialisation.AttributSerialisable;
 
 public class MPartieReseau extends MPartie implements Fournisseur, Identifiable {
 
     @AttributSerialisable
     public String idJoueurInvite;
-    private String __idJoueurInvite = "";
+    private String __idJoueurInvite = "idJoueurInvite";
 
     @AttributSerialisable
     public String idJoueurHote;
-    private String __idJoueurHote;
+    private String __idJoueurHote =  "idJoueurHote";
 
     public MPartieReseau(MParametresPartie parametres) {
         super(parametres);
+        fournirActionRecevoirCoup();
     }
 
     @Override
@@ -25,20 +31,43 @@ public class MPartieReseau extends MPartie implements Fournisseur, Identifiable 
         return idJoueurHote;
     }
 
-    /*TODO*/
     private void fournirActionRecevoirCoup() {
+        ControleurAction.fournirAction(this, GCommande.RECEVOIR_COUP_RESEAU, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                try{
 
+                    recevoirCoupReseau(Integer.parseInt((String)args[0]));
+
+                } catch (ClassCastException ex) {
+                    throw  new ErreurAction(ex);
+                }
+            }
+        });
     }
 
-    /*TODO*/
     @Override
     protected void fournirActionPlacerJeton() {
+        ControleurAction.fournirAction(this, GCommande.JOUER_COUP_ICI, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                try{
 
+                    int colonne = (Integer) args[0];
+
+                    jouerCoup(colonne);
+
+                    ControleurPartieReseau.getInstance().transmettreCoup(colonne);
+
+                } catch (ClassCastException ex) {
+                    throw  new ErreurAction(ex);
+                }
+            }
+        });
     }
 
-    /*TODO*/
     private void recevoirCoupReseau(int colonne) {
-
+        jouerCoup(colonne);
     }
 
     @Override

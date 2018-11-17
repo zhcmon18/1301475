@@ -14,6 +14,7 @@ import ca.cours5b5.pavelzaharciuc.exceptions.ErreurModele;
 import ca.cours5b5.pavelzaharciuc.modeles.Identifiable;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
 import ca.cours5b5.pavelzaharciuc.modeles.MPartie;
+import ca.cours5b5.pavelzaharciuc.modeles.MPartieReseau;
 import ca.cours5b5.pavelzaharciuc.modeles.Modele;
 import ca.cours5b5.pavelzaharciuc.donnees.Disque;
 import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
@@ -121,11 +122,13 @@ public final class ControleurModeles {
                                             final ListenerGetModele listenerGetModele) throws ErreurModele {
 
         if(nomModele.equals(MParametres.class.getSimpleName())) {
+
             MParametres mParametres = new MParametres();
 
             listenerGetModele.reagirAuModele(mParametres);
 
         } else if(nomModele.equals(MPartie.class.getSimpleName())) {
+
             getModele(MParametres.class.getSimpleName(), new ListenerGetModele() {
                 @Override
                 public void reagirAuModele(Modele modele) {
@@ -134,6 +137,18 @@ public final class ControleurModeles {
                     MPartie mPartie = new MPartie(mParametres.getParametresPartie());
 
                     listenerGetModele.reagirAuModele(mPartie);
+                }
+            });
+
+        } else if (nomModele.equals(MPartieReseau.class.getSimpleName())) {
+
+            getModele(MParametres.class.getSimpleName(), new ListenerGetModele() {
+                @Override
+                public void reagirAuModele(Modele modele) {
+                    MParametres mParametres = (MParametres) modele;
+                    MPartieReseau mPartieReseau = new MPartieReseau(mParametres.getParametresPartie().cloner());
+                    listenerGetModele.reagirAuModele(mPartieReseau);
+
                 }
             });
 

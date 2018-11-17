@@ -14,7 +14,7 @@ public abstract class Proxy {
     }
 
     public void connecterAuServeur() {
-        noeudServeur = FirebaseDatabase.getInstance().getReference();
+        noeudServeur = FirebaseDatabase.getInstance().getReference(cheminServeur);
     }
 
     public void deconnecterDuServeur() {

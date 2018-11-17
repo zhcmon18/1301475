@@ -24,5 +24,7 @@
 
     <string name="erase">Erase the current play</string>
 
+    <string name="playOnLine">Play On Line</string>
+
 
 </resources>

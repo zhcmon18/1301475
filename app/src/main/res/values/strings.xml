@@ -28,4 +28,6 @@
 
     <string name="erase">Effacer la partie courrante</string>
 
+    <string name="playOnLine">Jouer en ligne</string>
+
 </resources>
