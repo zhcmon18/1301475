@@ -44,6 +44,10 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
             VMenuPrincipal.modifierTexteBouton(getString(R.string.logout));
         }
 
+        if(!UsagerCourant.siUsagerConnecte()) {
+            VMenuPrincipal.afficherOuCacherBoutonReseau(View.GONE);
+        }
+
         fournirActions();
     }
 

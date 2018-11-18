@@ -33,6 +33,6 @@ public class APartieReseau extends Activite implements Fournisseur {
     protected void onDestroy() {
         super.onDestroy();
 
-        ControleurModeles.detruireModele(MPartieReseau.class.getSimpleName());
+        //ControleurModeles.detruireModele(MPartieReseau.class.getSimpleName());
     }
 }

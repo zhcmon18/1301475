@@ -114,9 +114,9 @@ public class VGrille extends GridLayout {
     }
 
     public void desactiverOuActiverEntetes(VEntete entete) {
-        if(!MPartie.getListeColonnesADesactiver().isEmpty()) {
+        if(!MPartie.getListeElementsADesactiver().isEmpty()) {
 
-            for (Integer col : MPartie.getListeColonnesADesactiver()) {
+            for (Integer col : MPartie.getListeElementsADesactiver()) {
                 if(col == entete.getColonne()) {
                     entete.setEnabled(false);
                 }
@@ -231,12 +231,12 @@ public class VGrille extends GridLayout {
 
     private void desactiverEntete(VEntete entete) {
 
-        //actionEntete.setArguments(entete.getColonne());
+        actionEntete.setArguments(entete.getColonne());
 
         if (!actionEntete.actionExecutable()) {
             entete.setEnabled(false);
 
-            MPartie.getListeColonnesADesactiver().add(entete.getColonne());
+            MPartie.getListeElementsADesactiver().add(entete.getColonne());
 
             ViewGroup view = VGrille.this;
             view.invalidate();

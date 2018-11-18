@@ -3,7 +3,6 @@ package ca.cours5b5.pavelzaharciuc.vues;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +19,6 @@ import ca.cours5b5.pavelzaharciuc.exceptions.ErreurObservation;
 import ca.cours5b5.pavelzaharciuc.global.GCommande;
 import ca.cours5b5.pavelzaharciuc.modeles.MParametres;
 import ca.cours5b5.pavelzaharciuc.modeles.Modele;
-import ca.cours5b5.pavelzaharciuc.usagers.UsagerCourant;
 
 
 public class VParametres extends Vue {
@@ -29,7 +27,7 @@ public class VParametres extends Vue {
     private Spinner spinnerLargeur;
     private Spinner spinnerPourGagner;
 
-    private Button boutonDetruire;
+    private static Button boutonDetruire;
 
     private Action actionHauteur;
     private Action actionLargeur;
@@ -53,12 +51,6 @@ public class VParametres extends Vue {
         super.onFinishInflate();
 
         initialiser();
-
-        if(UsagerCourant.siUsagerConnecte()) {
-            boutonDetruire.setVisibility(VISIBLE);
-        } else {
-            boutonDetruire.setVisibility(GONE);
-        }
 
         demanderActions();
 
@@ -169,6 +161,9 @@ public class VParametres extends Vue {
             @Override
             public void onClick(View v) {
                 actionDetruire.executerDesQuePossible();
+
+                installerObservateur();
+
             }
         });
     }
@@ -260,4 +255,10 @@ public class VParametres extends Vue {
             }
         }
     }
+
+
+    public static void afficherOuCacherBoutonDetruire(int visibilite) {
+        boutonDetruire.setVisibility(visibilite);
+    }
+
 }
