@@ -42,7 +42,7 @@ public class VGrille extends GridLayout {
 
     private List<VEntete> entetes;
 
-    private GCouleur couleurCourante;
+    private List<Integer> entetesADesactiver;
 
     @Override
     protected void onFinishInflate() {
@@ -55,12 +55,9 @@ public class VGrille extends GridLayout {
     }
 
 
-
-
     private void demanderActionEntete() {
 
         actionEntete = ControleurAction.demanderAction(GCommande.JOUER_COUP_ICI);
-
     }
 
     private void initialiser() {
@@ -113,14 +110,13 @@ public class VGrille extends GridLayout {
         }
     }
 
-    public void desactiverOuActiverEntetes(VEntete entete) {
-        if(!MPartie.getListeElementsADesactiver().isEmpty()) {
 
-            for (Integer col : MPartie.getListeElementsADesactiver()) {
-                if(col == entete.getColonne()) {
-                    entete.setEnabled(false);
-                }
-            }
+    public void desactiverOuActiverEntetes(MPartie partie) {
+
+        for (int colonne : partie.getListeElementsADesactiver()) {
+
+            entetes.get(colonne).setEnabled(false);
+
         }
     }
 
@@ -150,12 +146,10 @@ public class VGrille extends GridLayout {
 
                 actionEntete.setArguments(entete.getColonne());
 
-                actionEntete.executerDesQuePossible();
-
-                VPartie.setCouleurJoueur(couleurCourante);
-
-                desactiverEntete(entete);
-
+                //if(actionEntete.actionExecutable()) {
+                    actionEntete.executerDesQuePossible();
+                //}
+                //desactiverEntete(entete);
             }
         });
 
@@ -201,8 +195,6 @@ public class VGrille extends GridLayout {
 
     void afficherJetons(MGrille grille){
 
-        couleurCourante = grille.getCouleurCourante();
-
         List<MColonne> colonnes = grille.getColonnes();
 
         for(int numeroColonne=0; numeroColonne < colonnes.size(); numeroColonne++){
@@ -225,25 +217,7 @@ public class VGrille extends GridLayout {
 
     }
 
-    public GCouleur getCouleurCourante() {
-        return couleurCourante;
-    }
-
-    private void desactiverEntete(VEntete entete) {
-
-        actionEntete.setArguments(entete.getColonne());
-
-        if (!actionEntete.actionExecutable()) {
-            entete.setEnabled(false);
-
-            MPartie.getListeElementsADesactiver().add(entete.getColonne());
-
-            ViewGroup view = VGrille.this;
-            view.invalidate();
-        }
-    }
-
-    public List<VEntete> getEntetes() {
-        return entetes;
+    public void setEntetesADesactiver(List<Integer> entetesADesactiver) {
+        this.entetesADesactiver = entetesADesactiver;
     }
 }

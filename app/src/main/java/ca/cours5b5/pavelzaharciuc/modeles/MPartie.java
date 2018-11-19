@@ -1,5 +1,7 @@
 package ca.cours5b5.pavelzaharciuc.modeles;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +30,6 @@ public class MPartie extends Modele implements Fournisseur {
     private GCouleur couleurCourante;
 
     public static List<Integer> listeElementsADesactiver;
-    public final String __listeElementsADesactiver = "listeElementsADesactiver";
 
     public MPartie(MParametresPartie parametres){
 
@@ -70,6 +71,8 @@ public class MPartie extends Modele implements Fournisseur {
                         try{
                              int colonne = (Integer) args[0];
 
+
+
                              jouerCoup(colonne);
 
                         }catch(ClassCastException e){
@@ -89,15 +92,16 @@ public class MPartie extends Modele implements Fournisseur {
 
     protected void jouerCoup(int colonne) {
 
+        if(dernierCoup(colonne)) {
+            listeElementsADesactiver.add(colonne);
+        }
+
         if(siCoupLegal(colonne)){
             listeCoups.add(colonne);
 
             grille.placerJeton(colonne, couleurCourante);
 
             prochaineCouleurCourante();
-
-            grille.setCouleurCourante(couleurCourante);
-
         }
     }
 
@@ -112,7 +116,7 @@ public class MPartie extends Modele implements Fournisseur {
     private  boolean dernierCoup(int colonne) {
         MColonne mColonne = grille.getColonnes().get(colonne);
 
-        return mColonne.nombreDeJetons() + 1 > parametres.getHauteur();
+        return mColonne.nombreDeJetons() + 1 == parametres.getHauteur();
     }
 
     private void prochaineCouleurCourante(){
@@ -149,14 +153,10 @@ public class MPartie extends Modele implements Fournisseur {
 
         List<String> listeCoupsObjetJson = (List<String>) objetJson.get(__listeCoups);
 
-        List<String> listeElementsADesactiver = (List<String>) objetJson.get(__listeElementsADesactiver);
-
-        if(listeCoupsObjetJson != null && listeElementsADesactiver != null){
+        if(listeCoupsObjetJson != null){
 
             List<Integer> coupsARejouer = listeCoupsAPartirJson(listeCoupsObjetJson);
             rejouerLesCoups(coupsARejouer);
-
-            this.listeElementsADesactiver = listeCoupsAPartirJson((listeElementsADesactiver));
 
         }
 
@@ -194,7 +194,6 @@ public class MPartie extends Modele implements Fournisseur {
 
         objetJson.put(__parametres, parametres.enObjetJson());
         objetJson.put(__listeCoups, listeCoupsEnObjetJson(listeCoups));
-        objetJson.put(__listeElementsADesactiver, listeCoupsEnObjetJson(listeElementsADesactiver));
 
         return objetJson;
 
@@ -215,12 +214,9 @@ public class MPartie extends Modele implements Fournisseur {
     }
 
 
-    public static List<Integer> getListeElementsADesactiver() {
-        return listeElementsADesactiver;
-    }
+    public List<Integer> getListeElementsADesactiver() { return listeElementsADesactiver; }
 
-    public void viderListeElementsADesactiver() {
-        listeElementsADesactiver.clear();
+    public GCouleur getCouleurCourante() {
+        return couleurCourante;
     }
-
 }

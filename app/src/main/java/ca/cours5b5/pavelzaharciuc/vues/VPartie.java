@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ca.cours5b5.pavelzaharciuc.R;
 import ca.cours5b5.pavelzaharciuc.controleurs.ControleurObservation;
 import ca.cours5b5.pavelzaharciuc.controleurs.interfaces.ListenerObservateur;
@@ -79,6 +81,8 @@ public class VPartie extends Vue {
 
         MParametresPartie parametresPartie = partie.getParametres();
 
+        grille.setEntetesADesactiver(partie.getListeElementsADesactiver());
+
         grille.creerGrille(parametresPartie.getHauteur(), parametresPartie.getLargeur());
 
     }
@@ -101,12 +105,9 @@ public class VPartie extends Vue {
 
         grille.afficherJetons(partie.getGrille());
 
-        setCouleurJoueur(grille.getCouleurCourante());
+        setCouleurJoueur(partie.getCouleurCourante());
 
-        for (VEntete entete : grille.getEntetes()) {
-            grille.desactiverOuActiverEntetes(entete);
-        }
-
+        grille.desactiverOuActiverEntetes(partie);
     }
 
     protected String getNomModele() {

@@ -215,7 +215,7 @@ public final class ControleurModeles {
             }
 
             if(modele instanceof  MPartie) {
-                ((MPartie) modele).viderListeElementsADesactiver();
+                //((MPartie) modele).viderListeElementsADesactiver();
             }
         }
     }
